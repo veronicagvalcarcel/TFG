@@ -1,0 +1,13 @@
+.text-red {
+  color: red;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.bg-red {
+  background-color: red;
+  color: white;
+  padding: 1rem;
+}
