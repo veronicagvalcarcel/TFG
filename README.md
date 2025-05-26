@@ -1,5 +1,58 @@
-# Vue 3 + Vite
+# Witch Tattoo
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Proyecto de gestión de reservas y galería para estudio de tatuajes.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Tecnologías
+
+- **Frontend:** Vue 3 + Vite
+- **Backend:** Laravel (API RESTful)
+
+## Estructura del Proyecto
+
+```
+tatuadora-web/
+├── src/                # Código fuente del frontend (Vue)
+│   ├── views/          # Vistas principales (Home, Reservas, Galería, FAQ, Admin, Contacto)
+│   ├── components/     # Componentes reutilizables
+│   └── router/         # Configuración de rutas
+├── tatuadora-backend/  # Backend en Laravel
+└── README.md
+```
+
+## Funcionalidades principales
+
+- Página de inicio con vista previa de trabajos y enlaces rápidos.
+- Reservas online con calendario y formulario.
+- Galería de imágenes categorizadas y filtrables.
+- Panel de administración para gestión de citas.
+- Página de preguntas frecuentes y políticas.
+- Formulario de contacto.
+
+## Instalación y uso
+
+### Frontend
+
+```bash
+cd tatuadora-web
+npm install
+npm run dev
+```
+
+### Backend
+
+```bash
+cd tatuadora-backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
+
+## Autoría
+
+Proyecto desarrollado por [Verónica G. Valcárcel](https://github.com/veronicagvalcarcel) para TFG de DAM.
+
+---
+
+¡Gracias por visitar Witch Tattoo!
