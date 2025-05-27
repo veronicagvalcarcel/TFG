@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\Api\ReservaController;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,4 +23,4 @@ Route::post('/login', function (Request $request) {
     return response()->json(['token' => $token]);
 });
 
-Route::middleware('auth:sanctum')->apiResource('reservas', ReservaController::class);
+Route::post('/reservas', [ReservaController::class, 'store']);

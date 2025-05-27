@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 
@@ -16,22 +17,15 @@ class ReservaController extends Controller
     }
 
     /**
-     * Muestra el formulario para crear una nueva reserva.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Almacena una nueva reserva en la base de datos.
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'cliente' => 'required|string|max:255',
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'fecha' => 'required|date',
-            'servicio' => 'required|string|max:255',
+            'mensaje' => 'nullable|string',
         ]);
 
         $reserva = Reserva::create($validated);
@@ -47,22 +41,15 @@ class ReservaController extends Controller
     }
 
     /**
-     * Muestra el formulario para editar una reserva específica.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Actualiza una reserva específica en la base de datos.
      */
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'cliente' => 'required|string|max:255',
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'fecha' => 'required|date',
-            'servicio' => 'required|string|max:255',
+            'mensaje' => 'nullable|string',
         ]);
 
         $reserva = Reserva::findOrFail($id);
