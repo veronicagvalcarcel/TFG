@@ -1,7 +1,9 @@
 <script setup>
+import Header from '../components/Header.vue'
 </script>
 
 <template>
+  <Header />
   <section class="home">
     <h1>Bienvenida a Witch Tattoo</h1>
     <p>Explora nuestros trabajos, reserva tu cita y contáctanos fácilmente.</p>
