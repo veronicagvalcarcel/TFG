@@ -12,5 +12,5 @@ body {
   margin: 0;
   color: #222;
 }
-/* Puedes agregar estilos globales aquí si lo necesitas */
+/*  agregar estilos globales aquí si se necesita */
 </style>
