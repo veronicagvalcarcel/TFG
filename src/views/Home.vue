@@ -1,5 +1,10 @@
 <script setup>
 import Header from '../components/Header.vue'
+import AboutSection from '../components/AboutSection.vue'
+import ServicesSection from '../components/ServicesSection.vue'
+import SocialProofSection from '../components/SocialProofSection.vue'
+import ReservasForm from '../components/ReservasForm.vue'
+import FooterSection from '../components/FooterSection.vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const video = ref(null)
@@ -20,42 +25,92 @@ onUnmounted(() => {
 })
 </script>
 
-
 <template>
-  <section class="parallax-container">
+  <!-- Menú fijo -->
+  <nav class="main-nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#galeria">Galería</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- Header/Parallax -->
+  <section id="inicio" class="parallax-container">
     <video autoplay muted loop class="parallax-video" ref="video">
       <source src="/1.mp4" type="video/mp4" />
     </video>
-
     <div class="overlay">
       <Header />
       <section class="home">
         <h1>Bienvenida a Witch Tattoo</h1>
         <p>Explora nuestros trabajos, reserva tu cita y contáctanos fácilmente.</p>
-
-        <div class="preview">
-          <h2>Trabajos recientes</h2>
-          <p>[Aquí irá una galería de imágenes destacadas]</p>
-        </div>
-
         <div class="actions">
-          <router-link to="/reservas" class="btn">Reservar cita</router-link>
-          <router-link to="/contacto" class="btn">Contacto directo</router-link>
+          <a href="#reservas" class="btn">Reservar cita</a>
+          <a href="#contacto" class="btn">Contacto directo</a>
         </div>
       </section>
     </div>
   </section>
 
-  <!-- 👇 Contenido adicional para generar scroll -->
-  <section class="dummy-content">
-    <h2>Más contenido</h2>
-    <p style="margin-bottom: 1000px">Este bloque es solo para generar scroll y ver el efecto parallax.</p>
+  <section id="galeria">
+    <SocialProofSection />
   </section>
+
+  <section id="servicios">
+    <ServicesSection />
+  </section>
+
+  <section id="about">
+    <AboutSection />
+  </section>
+
+  <section id="reservas">
+    <ReservasForm />
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <router-link to="/faq">Ver FAQ completas</router-link>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <router-link to="/contacto">Ir a contacto</router-link>
+  </section>
+
+  <FooterSection />
 </template>
 
-
-
 <style scoped>
+html {
+  scroll-behavior: smooth;
+}
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.main-nav a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.main-nav a:hover {
+  color: #b48a78;
+}
+
 .parallax-container {
   position: relative;
   height: 100vh;
@@ -96,5 +151,17 @@ onUnmounted(() => {
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+  .home {
+    padding: 0 0.5rem;
+  }
 }
 </style>
