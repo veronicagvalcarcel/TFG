@@ -14,18 +14,21 @@
 
 ## 🧱 Estructura del proyecto
 
+```
 tatuadora-web/
 ├── public/
-│ └── 1.mp4 # Video para header con parallax
+│   └── 1.mp4                 # Video para header con parallax
 ├── src/
-│ ├── components/ # Componentes Vue reutilizables
-│ ├── views/ # Vistas como Home.vue (SPA principal)
-│ ├── assets/ # Imágenes y recursos estáticos
-│ ├── App.vue # Entry point
-│ └── main.js # Configuración de Vue
-├── tatuadora-backend/ # Carpeta backend (Laravel)
+│   ├── components/           # Componentes Vue reutilizables
+│   ├── views/                # Vistas como Home.vue (SPA principal)
+│   ├── assets/               # Imágenes y recursos estáticos
+│   ├── App.vue               # Entry point
+│   └── main.js               # Configuración de Vue
+├── tatuadora-backend/       # Carpeta backend (Laravel)
 ├── package.json
 └── README.md
+```
+
 
 
 ## 🚀 Cómo ejecutar el proyecto
