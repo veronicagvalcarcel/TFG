@@ -69,7 +69,6 @@ El proyecto se organiza mediante ramas específicas para cada funcionalidad o co
 | `feature/single-page-layout`       | Estructura general como SPA con navegación por secciones         |
 | `feature/reservations-form`        | Formulario de reservas integrado y funcional                     |
 | `feature/faq-section`              | Sección de preguntas frecuentes con estructura tipo acordeón     |
-| `feature/contact-form`             | Formulario de contacto funcional y accesible                     |
 | `feature/gallery-section`          | Galería de imágenes categorizadas y filtrables                   |
 | `feature/services-section`         | Vista con los servicios ofrecidos                                |
 | `feature/header-footer-components` | Encabezado y pie de página reutilizables                         |
