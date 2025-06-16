@@ -1,5 +1,5 @@
 <template>
-  <section class="extras-section">
+  <section class="FAQ">
     <h2>Cuidados del tatuaje</h2>
     <ul>
       <li>Lava el tatuaje suavemente con agua tibia y jabón neutro.</li>
@@ -13,12 +13,12 @@
 </template>
 
 <style scoped>
-.extras-section {
+.FAQ {
   background: #f5ede6;
   padding: 2.5rem 1rem;
   margin-top: 2rem;
 }
-.extras-section ul {
+.FAQ ul {
   max-width: 500px;
   margin: 1rem auto 0 auto;
   text-align: left;

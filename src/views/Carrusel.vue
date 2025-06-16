@@ -1,5 +1,5 @@
 <template>
-  <section class="social-proof-section">
+  <section class="Carrusel">
     <h2>Galería por estilos</h2>
     <div class="filters">
       <button
@@ -11,13 +11,13 @@
         {{ style }}
       </button>
     </div>
-    <div class="carousel">
+    <div class="Carrusel">
       <img
         v-for="img in filteredImages"
         :key="img.src"
         :src="img.src"
         :alt="img.style"
-        class="carousel-img"
+        class="carrusel-img"
       />
     </div>
   </section>

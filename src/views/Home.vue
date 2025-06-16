@@ -2,8 +2,8 @@
 import Header from '../components/Header.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
-import SocialProofSection from '../components/Carrusel.vue'
 import ReservasForm from '../components/ReservasForm.vue'
+import Carrusel from '../components/Carrusel.vue' 
 import FooterSection from '../components/FooterSection.vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 
@@ -28,49 +28,47 @@ onUnmounted(() => {
 <template>
   <!-- Menú fijo -->
   <nav class="main-nav">
-    <a href="#inicio">Inicio</a>
-    <a href="#galeria">Galería</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#reservas">Reservas</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+    <a href="#Home">Inicio</a>
+    <a href="#Carrusel">Galería</a>
+    <a href="#ServicesSection">Servicios</a>
+    <a href="#ReservasForm">Reservas</a>
+    <a href="#FAQ">FAQ</a>
+    </nav>
 
   <!-- Header/Parallax -->
-  <section id="inicio" class="parallax-container">
+  <section id="Home" class="parallax-container">
     <video autoplay muted loop class="parallax-video" ref="video">
       <source src="/1.mp4" type="video/mp4" />
     </video>
     <div class="overlay">
       <Header />
       <section class="home">
-        <h1>Bienvenida a Witch Tattoo</h1>
+        <h1>Bienvenid@ a Witch Tattoo</h1>
         <p>Explora nuestros trabajos, reserva tu cita y contáctanos fácilmente.</p>
         <div class="actions">
-          <a href="#reservas" class="btn">Reservar cita</a>
-          <a href="#contacto" class="btn">Contacto directo</a>
+          <a href="#ReservasForm" class="btn">Reservar cita</a>
         </div>
       </section>
     </div>
   </section>
 
-  <section id="galeria">
-    <SocialProofSection />
+  <section id="Carrusel">
+    <Carrusel />
   </section>
 
-  <section id="servicios">
+  <section id="ServicesSection">
     <ServicesSection />
   </section>
 
-  <section id="about">
+  <section id="AboutSection">
     <AboutSection />
   </section>
 
-  <section id="reservas">
+  <section id="ReservasForm">
     <ReservasForm />
   </section>
 
-  <section id="faq">
+  <section id="FAQ">
     <h2>Preguntas Frecuentes</h2>
     <router-link to="/faq">Ver FAQ completas</router-link>
   </section>

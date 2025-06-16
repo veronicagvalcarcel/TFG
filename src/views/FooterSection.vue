@@ -1,10 +1,9 @@
 <template>
-  <footer class="footer-section">
+  <footer class="FooterSection">
     <div class="footer-links">
-      <router-link to="/faq">FAQ</router-link>
-      <router-link to="/contacto">Contacto</router-link>
-      <router-link to="/reservas">Reservas</router-link>
-      <router-link to="/galeria">Galería</router-link>
+      <router-link to="/FAQ">FAQ</router-link>
+      <router-link to="/ReservasForm">Reservas</router-link>
+      <router-link to="/Carrusel">Galería</router-link>
     </div>
     <div class="footer-logo">Witch Tattoo</div>
     <div class="footer-social">
@@ -15,7 +14,7 @@
 </template>
 
 <style scoped>
-.footer-section {
+.FooterSection {
   background: #e0d6ce;
   padding: 2rem 1rem;
   display: flex;

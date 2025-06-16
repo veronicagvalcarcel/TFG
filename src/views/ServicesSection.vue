@@ -1,5 +1,5 @@
 <template>
-  <section class="services-section">
+  <section class="ServicesSection">
     <div class="service-card" v-for="service in services" :key="service.title">
       <img :src="service.img" :alt="service.title" />
       <h3>{{ service.title }}</h3>
