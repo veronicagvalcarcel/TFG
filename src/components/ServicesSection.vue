@@ -1,8 +1,22 @@
 <template>
   <section class="services-section">
     <div class="service-card" v-for="service in services" :key="service.title">
-      <img :src="service.img" :alt="service.title" />
       <h3>{{ service.title }}</h3>
+
+      <template v-if="service.video">
+        <video
+          :src="service.video"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="media"
+        ></video>
+      </template>
+      <template v-else>
+        <img :src="service.img" :alt="service.title" class="media" />
+      </template>
+
       <p>{{ service.desc }}</p>
     </div>
   </section>
@@ -12,18 +26,18 @@
 const services = [
   {
     title: 'Creamos tu diseño',
-    desc: 'Diseños personalizados y exclusivos para ti.',
-    img: '/servicio1.jpg'
+    video: '/design.mp4',
+    desc: 'Diseños personalizados y exclusivos para ti.'
   },
   {
     title: 'Reinventa tu tatuaje (Cover up)',
-    desc: 'Transformamos y mejoramos tatuajes antiguos.',
-    img: '/servicio2.jpg'
+    video: '/coverup.mp4',
+    desc: 'Transformamos y mejoramos tatuajes antiguos.'
   },
   {
     title: 'Tatuamos tu idea',
-    desc: 'Trae tu idea y la convertimos en arte.',
-    img: '/servicio3.jpg'
+    video: '/tattoo.mp4',
+    desc: 'Trae tu idea y la convertimos en arte.'
   }
 ]
 </script>
@@ -37,6 +51,7 @@ const services = [
   background: #f5ede6;
   flex-wrap: wrap;
 }
+
 .service-card {
   background: #fff;
   border-radius: 8px;
@@ -45,13 +60,15 @@ const services = [
   text-align: center;
   width: 220px;
 }
-.service-card img {
+
+.media {
   width: 100%;
   height: 120px;
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 1rem;
 }
+
 h3 {
   margin-bottom: 0.5rem;
   color: #b48a78;
