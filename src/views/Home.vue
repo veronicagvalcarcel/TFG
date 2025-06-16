@@ -75,11 +75,6 @@ onUnmounted(() => {
     <router-link to="/faq">Ver FAQ completas</router-link>
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <router-link to="/contacto">Ir a contacto</router-link>
-  </section>
-
   <FooterSection />
 </template>
 
