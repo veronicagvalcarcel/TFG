@@ -2,7 +2,7 @@
 import Header from '../components/Header.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
-import SocialProofSection from '../components/SocialProofSection.vue'
+import SocialProofSection from '../components/Carrusel.vue'
 import ReservasForm from '../components/ReservasForm.vue'
 import FooterSection from '../components/FooterSection.vue'
 import { onMounted, onUnmounted, ref } from 'vue'
