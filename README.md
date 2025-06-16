@@ -6,7 +6,7 @@
 
 - Diseño responsive y visualmente atractivo.
 - Efecto de parallax con video de fondo en el header.
-- Navegación por secciones (`Inicio`, `Galería`, `Servicios`, `Reservas`, `FAQ`, `Contacto`) mediante anclas internas.
+- Navegación por secciones (`Inicio`, `Galería`, `Servicios`, `Reservas`, `FAQ`) mediante anclas internas.
 - Scroll suave y experiencia fluida en dispositivos móviles.
 - Integración de componentes reutilizables (`Header`, `Footer`, `ReservasForm`, etc.).
 - Estructura clara y mantenible del código frontend.
