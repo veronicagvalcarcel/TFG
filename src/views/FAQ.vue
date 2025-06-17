@@ -1,27 +1,7 @@
 <template>
-  <section class="FAQ">
-    <h2>Cuidados del tatuaje</h2>
-    <ul>
-      <li>Lava el tatuaje suavemente con agua tibia y jabón neutro.</li>
-      <li>Seca con papel desechable, sin frotar.</li>
-      <li>Aplica una capa fina de crema cicatrizante recomendada.</li>
-      <li>Evita el sol, piscinas y saunas durante la cicatrización.</li>
-      <li>No retires las costras ni rasques la zona tatuada.</li>
-      <li>Sigue las recomendaciones personalizadas de tu tatuadora.</li>
-    </ul>
-  </section>
+  <FAQSection />
 </template>
 
-<style scoped>
-.FAQ {
-  background: #f5ede6;
-  padding: 2.5rem 1rem;
-  margin-top: 2rem;
-}
-.FAQ ul {
-  max-width: 500px;
-  margin: 1rem auto 0 auto;
-  text-align: left;
-  padding-left: 1.2rem;
-}
-</style>
+<script setup>
+import FAQSection from '../components/FAQSection.vue'
+</script>
