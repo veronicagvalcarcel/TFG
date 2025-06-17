@@ -64,17 +64,6 @@ Backend (opcional): Laravel (incluido en /tatuadora-backend)
 
 El proyecto se organiza mediante ramas específicas para cada funcionalidad o componente. Esto facilita el trabajo en paralelo y el control de versiones.
 
-| Rama                               | Descripción                                                      |
-|------------------------------------|------------------------------------------------------------------|
-| `feature/single-page-layout`       | Estructura general como SPA con navegación por secciones         |
-| `feature/reservations-form`        | Formulario de reservas integrado y funcional                     |
-| `feature/faq-section`              | Sección de preguntas frecuentes con estructura tipo acordeón     |
-| `feature/gallery-section`          | Galería de imágenes categorizadas y filtrables                   |
-| `feature/services-section`         | Vista con los servicios ofrecidos                                |
-| `feature/header-footer-components` | Encabezado y pie de página reutilizables                         |
-| `feature/parallax-video-header`    | Efecto parallax con video en el encabezado                       |
-| `feature/responsive-design`        | Adaptaciones visuales para todos los tamaños de pantalla         |
-| `feature/vue-components-structure` | Organización del código con componentes reutilizables            |
 
 ### Cambiar a una rama específica
 
