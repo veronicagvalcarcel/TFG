@@ -2,8 +2,7 @@
   <footer class="footer-section">
     <div class="footer-links">
       <router-link to="/faq">FAQ</router-link>
-      <router-link to="/contacto">Contacto</router-link>
-      <router-link to="/reservas">Reservas</router-link>
+     <router-link to="/reservas">Reservas</router-link>
       <router-link to="/galeria">Galería</router-link>
     </div>
     <div class="footer-logo">Witch Tattoo</div>
