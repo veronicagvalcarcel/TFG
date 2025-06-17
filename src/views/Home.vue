@@ -1,9 +1,9 @@
 <script setup>
-import Header from '../components/Header.vue'
+import Header from '../components/HeaderSection.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
-import ReservasForm from '../components/ReservasForm.vue'
-import Carrusel from '../components/Carrusel.vue' 
+import ReservasForm from '../components/ReservasSection.vue'
+import Carrusel from '../components/CarruselSection.vue' 
 import FooterSection from '../components/FooterSection.vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 

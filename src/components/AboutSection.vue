@@ -6,8 +6,7 @@
       <p>
         Soy Sara, tatuadora profesional. Mi pasión es crear arte único y personalizado para cada cliente. Descubre más sobre mi trayectoria y filosofía.
       </p>
-      <router-link to="/faq" class="about-link">Conoce más</router-link>
-    </div>
+          </div>
   </section>
 </template>
 
