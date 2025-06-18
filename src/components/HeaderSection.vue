@@ -1,8 +1,11 @@
 <template>
   <header>
     <div class="header-container">
-      <h1>Bienvenid@ a Witch Tattoo</h1>
-      <p>Explora nuestros diseños, inspírate, conecta con tu estilo y agenda fácilmente tu próxima cita.</p>
+      <h1 class="header-title">Witch Tattoo</h1>
+      <p class="header-slash"></p>
+      <p class="header-text">
+        Explora nuestros diseños, inspírate, conecta con tu estilo y agenda fácilmente tu próxima cita.
+      </p>
     </div>
   </header>
 </template>
@@ -17,25 +20,31 @@ export default {}
   width: 100%;
   height: 100vh;
   background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 1;
 }
-h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+.header-title {
   font-size: 48px;
   color: #fff;
-  text-align: center;
-  z-index: 2;
+  margin-bottom: 1rem;
 }
-p {
-  position: absolute;
-  top: calc(50% + 60px);
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+.header-slash {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.header-text {
   font-size: 24px;
   color: #fff;
-  text-align: center;
-  z-index: 2;
+  margin: 0;
 }
 </style>
