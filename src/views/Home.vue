@@ -42,13 +42,6 @@ onUnmounted(() => {
     </video>
     <div class="overlay">
       <Header />
-      <section class="home">
-        <h1>Bienvenid@ a Witch Tattoo</h1>
-        <p>Explora nuestros trabajos, reserva tu cita y contáctanos fácilmente.</p>
-        <div class="actions">
-          <a href="#ReservasForm" class="btn">Reservar cita</a>
-        </div>
-      </section>
     </div>
   </section>
 
