@@ -1,0 +1,16 @@
+FROM php:8.2-cli
+
+# Instala extensiones necesarias para Laravel y PostgreSQL
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    unzip \
+    git \
+    curl \
+    libzip-dev \
+    zip \
+    && docker-php-ext-install pdo pdo_pgsql
+
+# Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Copia el archivo de configuración de PHP
+# COPY ./php.ini /usr/local/etc/php/conf.d/
