@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   app:
     build:
       context: ./tatuadora-backend
     container_name: laravel_app
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
       - ./tatuadora-backend:/var/www/html
     depends_on:
@@ -19,7 +17,7 @@ services:
     container_name: postgres_db
     restart: unless-stopped
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_DB: tatuadora_db
       POSTGRES_USER: postgres
@@ -32,12 +30,26 @@ services:
     container_name: pgadmin
     restart: unless-stopped
     ports:
-      - 5050:80
+      - "5050:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
     volumes:
       - pgadmin_data:/var/lib/pgadmin
+
+  vue:
+    image: node:20
+    container_name: vue_app
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - ./node_modules:/var/www/html/node_modules
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    tty: true
+    command: npm run dev -- --host 0.0.0.0
+
 
 volumes:
   postgres_data:

@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-# Instala extensiones necesarias para Laravel y PostgreSQL
+# Extensiones necesarias para Laravel + PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     unzip \
@@ -10,7 +10,10 @@ RUN apt-get update && apt-get install -y \
     zip \
     && docker-php-ext-install pdo pdo_pgsql
 
-# Instalar Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-# Copia el archivo de configuración de PHP
-# COPY ./php.ini /usr/local/etc/php/conf.d/
+
+WORKDIR /var/www/html
+
+# Servir Laravel en dev
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
