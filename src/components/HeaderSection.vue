@@ -4,7 +4,7 @@
       <h1 class="header-title">Witch Tattoo Studio</h1>
       <p class="header-slash"></p>
       <p class="header-text">
-        Explora nuestros diseños, inspírate, conecta con tu estilo y agenda fácilmente tu próxima cita.
+        Explora todos los diseños, inspírate, conecta con tu estilo y agenda tu próxima cita.
       </p>
     </div>
   </header>

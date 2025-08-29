@@ -4,7 +4,7 @@
     <ul>
       <li>Lava el tatuaje suavemente con agua tibia y jabón neutro.</li>
       <li>Seca con papel desechable, sin frotar.</li>
-      <li>Aplica una capa fina de crema cicatrizante recomendada.</li>
+      <li>Aplica una capa fina de la crema cicatrizante recomendada.</li>
       <li>Evita el sol, piscinas y saunas durante la cicatrización.</li>
       <li>No retires las costras ni rasques la zona tatuada.</li>
       <li>Sigue las recomendaciones personalizadas de tu tatuadora.</li>
