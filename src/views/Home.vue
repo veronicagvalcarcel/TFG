@@ -26,21 +26,25 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Menú fijo -->
+  <!-- Menú fijo ajustado al tamaño del hero/header -->
   <nav class="main-nav">
-    <!-- Enlaces de navegación a la izquierda -->
-    <div class="nav-links">
-      <a href="#Carrusel">Galería</a>
-      <a href="#ServicesSection">Servicios</a>
-      <a href="#FAQ">FAQ</a>
+    <div class="nav-container">
+      <!-- Logo a la izquierda -->
+      <a href="#Home" class="logo-link">Witch Tattoo Studio</a>
+
+      <!-- Enlaces de secciones centrados -->
+      <div class="nav-links">
+        <a href="#AboutSection">Sobre nosotros</a>
+        <a href="#Carrusel">Galería</a>
+        <a href="#ServicesSection">Servicios</a>
+        <a href="#FAQ">FAQ</a>
+      </div>
+
+      <!-- Botón de reservas a la derecha -->
+      <a href="/reservas" class="reserva-btn-menu">¡Quiero tatuarme!</a>
     </div>
-
-    <!-- Logo centrado -->
-    <a href="#Home" class="logo-link">Witch Tattoo Studio</a>
-
-    <!-- Botón de reservas a la derecha -->
-    <a href="/reservas" class="reserva-btn-menu">¡Quiero tatuarme!</a>
   </nav>
+
 
   <!-- Header/Parallax -->
   <section id="Home" class="parallax-container">
@@ -60,7 +64,7 @@ onUnmounted(() => {
     </div>
   </section>
 
- <section id="AboutSection">
+  <section id="AboutSection">
     <AboutSection />
   </section>
 
@@ -72,7 +76,7 @@ onUnmounted(() => {
     <ServicesSection />
   </section>
 
-   <section id="ReservasForm">
+  <section id="ReservasForm">
     <ReservasForm />
   </section>
 
@@ -96,47 +100,49 @@ html {
   width: 100%;
   background: #fff;
   z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.nav-container {
+  max-width: 1200px; /* limita el contenido al ancho del header */
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-/* Enlaces de navegación a la izquierda */
+/* Logo a la izquierda */
+.logo-link {
+  font-weight: bold;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.logo-link:hover {
+  color: #e291ec;
+}
+
+/* Enlaces de secciones centrados */
 .nav-links {
   display: flex;
   gap: 2rem;
-  flex: 0;
 }
+
 .nav-links a {
   color: #222;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
 }
-.nav-links a:hover {
-  color: #e291ec;
-}
 
-/* Logo centrado */
-.logo-link {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bold;
-  color: #222;
-  text-decoration: none;
-  font-size: 1.2rem;
-  z-index: 1;
-}
-.logo-link:hover {
+.nav-links a:hover {
   color: #e291ec;
 }
 
 /* Botón del menú a la derecha */
 .reserva-btn-menu {
-  flex: 0;
   padding: 0.6rem 1.8rem;
   background: linear-gradient(45deg, #2f023a, #e291ec);
   color: #fff;
@@ -148,6 +154,7 @@ html {
   box-shadow: 0 0 10px rgba(206, 78, 245, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .reserva-btn-menu:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(206, 78, 245, 0.8);
@@ -236,6 +243,7 @@ html {
   .nav-links {
     gap: 1rem;
   }
+
   .reserva-btn-menu {
     padding: 0.5rem 1.5rem;
     font-size: 0.9rem;
@@ -247,19 +255,18 @@ html {
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+    max-width: 100%;
+    padding: 1rem;
   }
+
   .nav-links {
     justify-content: center;
     flex-wrap: wrap;
   }
+
   .reserva-btn-menu {
     margin-top: 0.5rem;
     text-align: center;
-  }
-  .logo-link {
-    position: relative;
-    left: 0;
-    transform: none;
   }
 }
 </style>

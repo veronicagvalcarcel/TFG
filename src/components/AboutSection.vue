@@ -21,7 +21,7 @@
   gap: 2rem;
   align-items: center;
   padding: 3rem 1rem;
-  background: #f9f6f3;
+  background: #e291ec;
   flex-wrap: wrap;
 }
 
