@@ -16,9 +16,9 @@
 
     <!-- Carrusel -->
     <div class="carousel">
-      <button class="arrow left" @click="prevImage">&#10094;</button>
-
       <div class="carousel-image">
+        <button class="arrow left" @click="prevImage">&#10094;</button>
+
         <template v-if="filteredImages.length">
           <img
             :src="filteredImages[currentIndex].src"
@@ -28,9 +28,9 @@
         <template v-else>
           <p>No hay imágenes</p>
         </template>
-      </div>
 
-      <button class="arrow right" @click="nextImage">&#10095;</button>
+        <button class="arrow right" @click="nextImage">&#10095;</button>
+      </div>
     </div>
   </section>
 </template>
@@ -178,11 +178,9 @@ onUnmounted(() => {
 }
 
 .carousel {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -196,6 +194,7 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* 👈 flechas se posicionan dentro */
 }
 
 .carousel-image img {
@@ -223,15 +222,15 @@ onUnmounted(() => {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .arrow.left {
-  left: 10px;
+  left: 5px;
 }
 
 .arrow.right {
-  right: 10px;
+  right: 5px;
 }
 
 .arrow:hover {
