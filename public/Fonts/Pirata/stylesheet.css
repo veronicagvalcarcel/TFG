@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Pirata One';
+    src: local('Pirata One'), local('PirataOne-Regular'),
+        url('hinted-subset-PirataOne-Regular.woff2') format('woff2'),
+        url('hinted-subset-PirataOne-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

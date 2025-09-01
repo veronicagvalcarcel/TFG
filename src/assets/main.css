@@ -1,13 +1,28 @@
-.text-red {
-  color: red;
+@font-face {
+  font-family: 'Pirata';
+  src: url('/Fonts/Pirata/Pirata.woff2') format('woff2'),
+       url('/Fonts/Pirata/Pirata.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-.text-blue {
-  color: blue;
+@font-face {
+  font-family: 'Almendra';
+  src: url('/Fonts/Almendra/Almendra.woff2') format('woff2'),
+       url('/Fonts/Almendra/Almendra.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-.bg-red {
-  background-color: red;
-  color: white;
-  padding: 1rem;
+/* Aplicar globalmente */
+h2, h3, h4 {
+  font-family: 'Pirata', sans-serif;
+  font-style: normal;
+}
+
+p {
+  font-family: 'Almendra', serif;
+  font-style: normal;
 }

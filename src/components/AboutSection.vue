@@ -21,8 +21,10 @@
   gap: 2rem;
   align-items: center;
   padding: 3rem 1rem;
-  background: #e291ec;
+  background: transparent; /* <- transparente para ver el fondo global */
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2; /* encima del fondo global */
 }
 
 .about-img {
@@ -31,26 +33,30 @@
   border-radius: 8px;
   flex-shrink: 0;
   overflow: hidden;
-  position: relative;
+  position: relative; /* mantiene el video dentro del contenedor */
+  z-index: 1; /* video encima del fondo, pero detrás del texto si lo hubiera */
 }
 
 .about-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* asegura que el video cubra todo el contenedor */
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .about-content {
   flex: 1;
+  color: #F5F5F5; /* texto sobre fondo global */
+  z-index: 3;
 }
 
 .about-link {
   display: inline-block;
   margin-top: 1rem;
-  color: #b48a78;
+  color: #B3B3B3; /* color secundario */
   font-weight: 600;
   text-decoration: underline;
 }

@@ -48,18 +48,21 @@ const services = [
   gap: 2rem;
   justify-content: center;
   padding: 3rem 1rem;
-  background: #f5ede6;
+  background: transparent; /* transparente para ver el fondo global */
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .service-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1); /* opcional, semitransparente para ver humo detrás */
   border-radius: 8px;
   box-shadow: 0 2px 8px #0001;
   padding: 1.5rem;
   text-align: center;
   width: 220px;
 }
+
 
 .media {
   width: 100%;

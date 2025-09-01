@@ -24,37 +24,21 @@ export default {}
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-35px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-35px); }
 }
 
 @keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.5) translate(0, 0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1) translate(5px, -5px);
-  }
+  0%, 100% { opacity: 0; transform: scale(0.5) translate(0, 0); }
+  50% { opacity: 1; transform: scale(1) translate(5px, -5px); }
 }
 
 @keyframes fadeSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Pseudo-elementos para los sparkles */
+/* Sparkles */
 .header-title::before,
 .header-title::after {
   content: '';
@@ -69,17 +53,8 @@ export default {}
   z-index: 2;
 }
 
-.header-title::before {
-  top: 10%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.header-title::after {
-  top: 30%;
-  right: 15%;
-  animation-delay: 1.5s;
-}
+.header-title::before { top: 10%; left: 20%; animation-delay: 0s; }
+.header-title::after { top: 30%; right: 15%; animation-delay: 1.5s; }
 
 /* Contenedor */
 .header-container {
@@ -97,22 +72,20 @@ export default {}
   z-index: 1;
 }
 
-/* Título principal con animaciones de entrada y flotación */
+/* Título */
 .header-title {
   font-family: 'Fleur De Leah', cursive;
   font-size: 150px;
   letter-spacing: 5px;
   color: #fff;
   margin-bottom: 1rem;
-
   animation: fadeSlideIn 8s ease forwards, float 3s ease-in-out infinite;
-
-  text-shadow:  0 0 4px #ff0000, 0 0 8px #ff0000, 0 0 12px #ff0000;
+  text-shadow: 0 0 4px #ff0000, 0 0 8px #ff0000, 0 0 12px #ff0000;
   position: relative;
   z-index: 1;
 }
 
-/* Hover para efecto mágico */
+/* Hover mágico */
 .header-title:hover {
   transform: scale(1.1) rotate(-2deg);
   text-shadow:

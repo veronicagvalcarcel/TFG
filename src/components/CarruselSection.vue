@@ -48,7 +48,7 @@ const selectedStyle = ref(styles[0])
 const currentIndex = ref(0)
 const styleIndex = ref(0) // índice del estilo actual
 
-// Imágenes por estilo
+// Imágenes por estilo (todas como estaban)
 const images = [
   { src: '/Carrusel/blackwork/1.webp', style: 'Blackwork' },
   { src: '/Carrusel/blackwork/2.webp', style: 'Blackwork' },
@@ -60,7 +60,6 @@ const images = [
 
   { src: '/Carrusel/color/1.webp', style: 'Color' },
   { src: '/Carrusel/color/2.webp', style: 'Color' },
-  { src: '/Carrusel/color/3.webp', style: 'Color' },
   { src: '/Carrusel/color/4.webp', style: 'Color' },
   { src: '/Carrusel/color/5.webp', style: 'Color' },
   { src: '/Carrusel/color/6.webp', style: 'Color' },
@@ -148,9 +147,12 @@ onUnmounted(() => {
 
 <style scoped>
 .social-proof-section {
-  background: #fff;
+  background: transparent; /* fondo global ya aplicado */
   padding: 2.5rem 1rem;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  color: #F5F5F5;
 }
 
 .filters {
@@ -189,22 +191,22 @@ onUnmounted(() => {
   height: 320px;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 2px 8px #0001;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* 👈 flechas se posicionan dentro */
+  position: relative;
+  z-index: 3;
 }
 
 .carousel-image img {
-  width: auto;
-  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.3s ease;
   display: block;
+  position: relative;
+  z-index: 4; /* sobre el fondo de humo */
+  transition: transform 0.3s ease;
 }
 
 .carousel-image img:hover {
@@ -222,7 +224,7 @@ onUnmounted(() => {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 5;
 }
 
 .arrow.left {

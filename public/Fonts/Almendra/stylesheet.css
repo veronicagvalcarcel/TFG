@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Almendra';
+    src: local('Almendra Regular'), local('Almendra-Regular'),
+        url('hinted-subset-Almendra-Regular.woff2') format('woff2'),
+        url('hinted-subset-Almendra-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

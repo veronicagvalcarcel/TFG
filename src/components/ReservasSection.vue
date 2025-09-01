@@ -1,6 +1,6 @@
 <template>
   <div class="reservas-section">
-    <h1>¿Te animas a inmortalizar tu idea?</h1>
+    <h2>¿Te animas a inmortalizar tu idea?</h2>
     <p>Haz clic y convierte tu idea en tinta.</p>
     <a href="/reservas" target="_blank" rel="noopener noreferrer" class="reserva-btn">
       ¡Quiero tatuarme!
@@ -16,9 +16,11 @@ export default {}
 .reservas-section {
   text-align: center;
   padding: 3rem 1rem;
-  background: #111;
-  color: #fff;
+  background: transparent; /* fondo transparente para ver parallax global */
+  color: #F5F5F5; /* texto sobre fondo oscuro global */
   font-family: sans-serif;
+  position: relative;
+  z-index: 2;
 }
 
 .reserva-btn {
@@ -27,16 +29,17 @@ export default {}
   padding: 1rem 2.5rem;
   font-size: 1.3rem;
   font-weight: bold;
-  color: #fff;
-  background: linear-gradient(45deg, #2f023a, #e291ec);
+  color: #F5F5F5;
+  background: linear-gradient(45deg, #FF2E2E, #6A4A8A);
   border-radius: 12px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 0 15px rgba(206, 78, 245, 0.6);
+  box-shadow: 0 0 15px rgba(255,46,46,0.6);
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 3;
 }
 
 .reserva-btn::before {
@@ -53,7 +56,7 @@ export default {}
 
 .reserva-btn:hover {
   transform: scale(1.1) rotate(-2deg);
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+  box-shadow: 0 0 25px rgba(255, 46, 46, 0.8);
 }
 
 .reserva-btn:hover::before {

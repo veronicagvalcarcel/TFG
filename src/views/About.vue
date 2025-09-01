@@ -16,9 +16,14 @@ import AboutSection from '../components/AboutSection.vue'
 
 <style scoped>
 .about-section-page {
-  position: relative;
-  overflow: hidden;
-  min-height: 400px;
+   display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: transparent; /* transparente para ver el fondo global */
+  flex-wrap: wrap;
+  position: relative; /* necesario para que z-index funcione */
+  z-index: 2; /* encima del humo */
 }
 
 .background-video {
@@ -28,12 +33,12 @@ import AboutSection from '../components/AboutSection.vue'
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+  z-index: 1;
 }
 
 .about-overlay {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   display: flex;
