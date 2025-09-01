@@ -120,7 +120,6 @@ export default {}
     0 0 16px #ff0000,
     0 0 24px #ff4d4d;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
-  /* cursor: pointer; */ /* Puedes activar y cambiar por cursor personalizado si quieres */
 }
 
 .header-slash {

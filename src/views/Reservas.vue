@@ -1,4 +1,20 @@
 <template>
+  <!-- Menú fijo ajustado al tamaño del hero/header -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <!-- Logo a la izquierda -->
+      <a href="#Home" class="logo-link">Witch Tattoo Studio</a>
+
+      <!-- Enlaces de secciones centrados -->
+      <div class="nav-links">
+        <a href="#AboutSection">Sobre nosotros</a>
+        <a href="#Carrusel">Galería</a>
+        <a href="#ServicesSection">Servicios</a>
+        <a href="#FAQ">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="reservas-page">
     <div class="overlay"></div>
     <div class="reservas-container">
@@ -38,12 +54,79 @@
       </form>
     </div>
   </div>
+
+  <FooterSection />
 </template>
 
 <script setup>
+import FooterSection from '../components/FooterSection.vue'
 </script>
 
 <style scoped>
+/* Menú fijo */
+.main-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo-link {
+  font-weight: bold;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.logo-link:hover {
+  color: #e291ec;
+}
+
+/* Enlaces de secciones */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #e291ec;
+}
+
+/* Botón de reservas */
+.reserva-btn-menu {
+  padding: 0.6rem 1.8rem;
+  background: linear-gradient(45deg, #2f023a, #e291ec);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(206, 78, 245, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.reserva-btn-menu:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(206, 78, 245, 0.8);
+}
+
+/* Página de reservas */
 .reservas-page {
   min-height: 100vh;
   display: flex;
