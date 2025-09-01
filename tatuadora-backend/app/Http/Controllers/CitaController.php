@@ -17,6 +17,7 @@ class CitaController extends Controller
     // Crear una nueva cita
     public function store(Request $request)
     {
+        // Validar campos
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -26,8 +27,23 @@ class CitaController extends Controller
             'hora' => 'required|date_format:H:i',
         ]);
 
+        // Redondear la hora al múltiplo de 15 minutos más cercano
+        $horaFormateada = date('H:i:00', strtotime($request->hora));
+
+        // Verificar si ya existe una cita en esa fecha y hora
+        $existeCita = Cita::where('fecha', $request->fecha)
+            ->where('hora', $horaFormateada)
+            ->first();
+
+        if ($existeCita) {
+            return response()->json([
+                'error' => 'Ya existe una cita para esta fecha y hora.'
+            ], 422);
+        }
+
+        // Crear cliente si no existe por correo único
         $cliente = Cliente::firstOrCreate(
-            ['correo' => $request->correo], // busca por correo único
+            ['correo' => $request->correo],
             [
                 'nombre' => $request->nombre,
                 'apellido' => $request->apellido,
@@ -35,10 +51,11 @@ class CitaController extends Controller
             ]
         );
 
+        // Crear la cita
         $cita = Cita::create([
             'cliente_id' => $cliente->id,
             'fecha' => $request->fecha,
-            'hora' => $request->hora,
+            'hora' => $horaFormateada,
             'estado' => 'pendiente',
         ]);
 
@@ -51,14 +68,13 @@ class CitaController extends Controller
     // Mostrar una cita por ID
     public function show($id)
     {
-        $cita = Cita::with('client')->findOrFail($id);
+        $cita = Cita::with('cliente')->findOrFail($id);
         return response()->json($cita);
     }
 
     // Actualizar una cita
     public function update(Request $request, $id)
     {
-        // Validar los datos recibidos
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -67,8 +83,10 @@ class CitaController extends Controller
             'fecha' => 'required|date',
             'hora' => 'required|date_format:H:i',
         ]);
+
         $cita = Cita::findOrFail($id);
         $cita->update($request->all());
+
         return response()->json($cita);
     }
 

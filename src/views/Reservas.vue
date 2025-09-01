@@ -19,36 +19,44 @@
     <div class="overlay"></div>
     <div class="reservas-container">
       <h1 class="reservas-title">Reserva tu cita</h1>
-      <form class="reservas-form">
+
+      <!-- Mostrar mensajes -->
+      <p v-if="mensaje" class="success">{{ mensaje }}</p>
+      <p v-if="error" class="error">{{ error }}</p>
+
+      <!-- Formulario -->
+      <form class="reservas-form" @submit.prevent="enviarReserva">
         <label>
           Nombre:
-          <input type="text" placeholder="Tu nombre" required />
+          <input type="text" placeholder="Tu nombre" v-model="nombre" required />
         </label>
 
         <label>
           Apellido:
-          <input type="text" placeholder="Tu apellido" required />
+          <input type="text" placeholder="Tu apellido" v-model="apellido" required />
         </label>
 
         <label>
           Correo electrónico:
-          <input type="email" placeholder="tucorreo@mail.com" required />
+          <input type="email" placeholder="tucorreo@mail.com" v-model="correo" required />
         </label>
 
         <label>
           Teléfono:
-          <input type="tel" placeholder="Tu teléfono" required />
+          <input type="tel" placeholder="Tu teléfono" v-model="telefono" required />
         </label>
 
-        <label>
-          Fecha de reserva:
-          <input type="date" required />
-        </label>
+        <div class="fecha-hora">
+          <label>
+            Fecha de reserva:
+            <input type="date" v-model="fecha" required />
+          </label>
 
-        <label>
-          Hora de reserva:
-          <input type="time" required />
-        </label>
+          <label>
+            Hora de reserva:
+            <input type="time" v-model="hora" required />
+          </label>
+        </div>
 
         <button type="submit">Reservar</button>
       </form>
@@ -59,18 +67,82 @@
 </template>
 
 <script setup>
+import { ref } from "vue"
+import axios from "axios"
 import FooterSection from '../components/FooterSection.vue'
+
+// Campos del formulario
+const nombre = ref("")
+const apellido = ref("")
+const correo = ref("")
+const telefono = ref("")
+const fecha = ref("")
+const hora = ref("")
+
+// Mensajes
+const mensaje = ref("")
+const error = ref("")
+
+// Función para enviar reserva
+const enviarReserva = async () => {
+  try {
+    mensaje.value = ""
+    error.value = ""
+
+    const response = await axios.post("http://localhost:8000/api/citas", {
+      nombre: nombre.value,
+      apellido: apellido.value,
+      correo: correo.value,
+      telefono: telefono.value,
+      fecha: fecha.value,
+      hora: hora.value,
+    })
+
+    mensaje.value = "Reserva enviada con éxito ✅"
+    console.log("Respuesta del servidor:", response.data)
+
+    // Limpiar formulario
+    nombre.value = ""
+    apellido.value = ""
+    correo.value = ""
+    telefono.value = ""
+    fecha.value = ""
+    hora.value = ""
+    
+  } catch (err) {
+    if (err.response && err.response.status === 422) {
+      // Mostrar mensaje específico de conflicto
+      error.value = err.response.data.error
+    } else {
+      console.error("Error al enviar la reserva:", err)
+      error.value = "❌ Hubo un problema al enviar la reserva."
+    }
+  }
+}
 </script>
 
 <style scoped>
-/* Menú fijo */
+/* Éxito/error */
+.success {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Resto de tu CSS permanece igual */
 .main-nav {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .nav-container {
@@ -82,51 +154,33 @@ import FooterSection from '../components/FooterSection.vue'
   margin: 0 auto;
 }
 
-/* Logo */
 .logo-link {
   font-weight: bold;
   color: #222;
   text-decoration: none;
   font-size: 1.2rem;
 }
+
 .logo-link:hover {
   color: #e291ec;
 }
 
-/* Enlaces de secciones */
 .nav-links {
   display: flex;
   gap: 2rem;
 }
+
 .nav-links a {
   color: #222;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
 }
+
 .nav-links a:hover {
   color: #e291ec;
 }
 
-/* Botón de reservas */
-.reserva-btn-menu {
-  padding: 0.6rem 1.8rem;
-  background: linear-gradient(45deg, #2f023a, #e291ec);
-  color: #fff;
-  font-weight: bold;
-  border-radius: 12px;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 0 10px rgba(206, 78, 245, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.reserva-btn-menu:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(206, 78, 245, 0.8);
-}
-
-/* Página de reservas */
 .reservas-page {
   min-height: 100vh;
   display: flex;
@@ -213,14 +267,50 @@ import FooterSection from '../components/FooterSection.vue'
   transform: translateY(-2px);
 }
 
+.fecha-hora {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.fecha-hora label {
+  flex: 1;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
     transform: translateY(25px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width:900px) {
+  .about-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width:600px) {
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .about-content {
+    flex: unset;
   }
 }
 </style>

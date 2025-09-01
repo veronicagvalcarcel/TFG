@@ -5,7 +5,7 @@
      <router-link to="/reservas">Reservas</router-link>
       <router-link to="/galeria">Galería</router-link>
     </div>
-    <div class="footer-logo">Witch Tattoo</div>
+    <div class="footer-logo">Witch Tattoo Studio</div>
     <div class="footer-social">
       <a href="#" target="_blank">Instagram</a>
       <a href="#" target="_blank">Facebook</a>
