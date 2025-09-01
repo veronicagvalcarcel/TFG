@@ -1,44 +1,149 @@
 <template>
   <section class="social-proof-section">
     <h2>Galería por estilos</h2>
+
+    <!-- Filtros -->
     <div class="filters">
       <button
         v-for="style in styles"
         :key="style"
         :class="{ active: selectedStyle === style }"
-        @click="selectedStyle = style"
+        @click="selectStyle(style)"
       >
         {{ style }}
       </button>
     </div>
+
+    <!-- Carrusel -->
     <div class="carousel">
-      <img
-        v-for="img in filteredImages"
-        :key="img.src"
-        :src="img.src"
-        :alt="img.style"
-        class="carousel-img"
-      />
+      <button class="arrow left" @click="prevImage">&#10094;</button>
+
+      <div class="carousel-image">
+        <template v-if="filteredImages.length">
+          <img
+            :src="filteredImages[currentIndex].src"
+            :alt="filteredImages[currentIndex].style"
+          />
+        </template>
+        <template v-else>
+          <p>No hay imágenes</p>
+        </template>
+      </div>
+
+      <button class="arrow right" @click="nextImage">&#10095;</button>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
+// Estilos de tatuajes
 const styles = [
-  'realismo', 'puntillismo', 'fine line', 'blackwork',
-  'mandalas', 'maorí', 'geométrico', 'color', 'old school'
+  'Realismo', 'Fine Line', 'Blackwork', 'Lettering',
+  'Cover Up', 'Polinesio', 'Geométrico', 'Color', 'Old School'
 ]
+
 const selectedStyle = ref(styles[0])
+const currentIndex = ref(0)
+const styleIndex = ref(0) // índice del estilo actual
+
+// Imágenes por estilo
 const images = [
-  { src: '/realismo1.jpg', style: 'realismo' },
-  { src: '/puntillismo1.jpg', style: 'puntillismo' },
-  // ...agrega tus imágenes aquí
+  { src: '/Carrusel/blackwork/1.webp', style: 'Blackwork' },
+  { src: '/Carrusel/blackwork/2.webp', style: 'Blackwork' },
+  { src: '/Carrusel/blackwork/3.webp', style: 'Blackwork' },
+  { src: '/Carrusel/blackwork/4.webp', style: 'Blackwork' },
+  { src: '/Carrusel/blackwork/5.webp', style: 'Blackwork' },
+  { src: '/Carrusel/blackwork/6.webp', style: 'Blackwork' },
+  { src: '/Carrusel/blackwork/7.webp', style: 'Blackwork' },
+
+  { src: '/Carrusel/color/1.webp', style: 'Color' },
+  { src: '/Carrusel/color/2.webp', style: 'Color' },
+  { src: '/Carrusel/color/3.webp', style: 'Color' },
+  { src: '/Carrusel/color/4.webp', style: 'Color' },
+  { src: '/Carrusel/color/5.webp', style: 'Color' },
+  { src: '/Carrusel/color/6.webp', style: 'Color' },
+  { src: '/Carrusel/color/7.webp', style: 'Color' },
+  { src: '/Carrusel/color/8.webp', style: 'Color' },
+
+  { src: '/Carrusel/fine line/1.webp', style: 'Fine Line' },
+  { src: '/Carrusel/fine line/2.webp', style: 'Fine Line' },
+  { src: '/Carrusel/fine line/3.webp', style: 'Fine Line' },
+
+  { src: '/Carrusel/geometrico/1.webp', style: 'Geométrico' },
+  { src: '/Carrusel/geometrico/2.webp', style: 'Geométrico' },
+  { src: '/Carrusel/geometrico/3.webp', style: 'Geométrico' },
+
+  { src: '/Carrusel/Cover up/1.webp', style: 'Cover Up' },
+  { src: '/Carrusel/Cover up/2.webp', style: 'Cover Up' },
+  { src: '/Carrusel/Cover up/3.webp', style: 'Cover Up' },
+
+  { src: '/Carrusel/polinesio/1.webp', style: 'Polinesio' },
+  { src: '/Carrusel/polinesio/2.webp', style: 'Polinesio' },
+
+  { src: '/Carrusel/lettering/1.webp', style: 'Lettering' },
+  { src: '/Carrusel/lettering/2.webp', style: 'Lettering' },
+  { src: '/Carrusel/lettering/3.webp', style: 'Lettering' },
+  { src: '/Carrusel/lettering/4.webp', style: 'Lettering' },
+  { src: '/Carrusel/lettering/5.webp', style: 'Lettering' },
+  { src: '/Carrusel/lettering/6.webp', style: 'Lettering' },
+  { src: '/Carrusel/lettering/7.webp', style: 'Lettering' },
+
+  { src: '/Carrusel/old school/1.webp', style: 'Old School' },
+  { src: '/Carrusel/old school/2.webp', style: 'Old School' },
+  { src: '/Carrusel/old school/3.webp', style: 'Old School' },
+  { src: '/Carrusel/old school/4.webp', style: 'Old School' },
+
+  { src: '/Carrusel/realismo/1.webp', style: 'Realismo' },
+  { src: '/Carrusel/realismo/2.webp', style: 'Realismo' },
+  { src: '/Carrusel/realismo/3.webp', style: 'Realismo' },
+  { src: '/Carrusel/realismo/4.webp', style: 'Realismo' },
 ]
+
 const filteredImages = computed(() =>
   images.filter(img => img.style === selectedStyle.value)
 )
+
+function selectStyle(style) {
+  selectedStyle.value = style
+  styleIndex.value = styles.indexOf(style)
+  currentIndex.value = 0
+}
+
+function prevImage() {
+  if (!filteredImages.value.length) return
+  currentIndex.value =
+    (currentIndex.value - 1 + filteredImages.value.length) %
+    filteredImages.value.length
+}
+
+function nextImage() {
+  if (!filteredImages.value.length) return
+  currentIndex.value =
+    (currentIndex.value + 1) % filteredImages.value.length
+}
+
+// Cambio automático cada 5 segundos
+let interval
+onMounted(() => {
+  interval = setInterval(() => {
+    if (!filteredImages.value.length) return
+
+    if (currentIndex.value < filteredImages.value.length - 1) {
+      currentIndex.value++
+    } else {
+      // Pasar al siguiente estilo
+      styleIndex.value = (styleIndex.value + 1) % styles.length
+      selectedStyle.value = styles[styleIndex.value]
+      currentIndex.value = 0
+    }
+  }, 5000)
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+})
 </script>
 
 <style scoped>
@@ -47,11 +152,16 @@ const filteredImages = computed(() =>
   padding: 2.5rem 1rem;
   text-align: center;
 }
+
 .filters {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
 }
+
 .filters button {
-  margin: 0 0.5rem 0.5rem 0;
   padding: 0.5rem 1rem;
   border: none;
   background: #f5ede6;
@@ -59,22 +169,100 @@ const filteredImages = computed(() =>
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
+  transition: background 0.3s, color 0.3s;
 }
+
 .filters button.active {
   background: #b48a78;
   color: #fff;
 }
+
 .carousel {
+  position: relative;
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
-.carousel-img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
+
+.carousel-image {
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 2px 8px #0001;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.carousel-image img:hover {
+  transform: scale(1.05);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .carousel-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .filters button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .arrow {
+    font-size: 1.5rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .filters {
+    gap: 0.3rem;
+  }
 }
 </style>
