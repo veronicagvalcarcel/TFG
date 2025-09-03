@@ -28,13 +28,22 @@ import FAQSection from '../components/FAQSection.vue'
           <router-link :to="{ path: '/', hash: '#FAQ' }">FAQ</router-link>
         </div>
 
-        <router-link to="/reservas" class="reserva-btn-menu" role="button">¡Quiero tatuarme!</router-link>
+        <!-- Botón de reservas y logos sociales -->
+        <div class="nav-actions">
+          <router-link to="/reservas" class="reserva-btn-menu" role="button">¡Quiero tatuarme!</router-link>
+          <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <img src="/Logos/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <img src="/Logos/whatsapp.svg" alt="WhatsApp">
+          </a>
+        </div>
       </div>
     </nav>
 
     <!-- Hero con video -->
     <header id="Home" class="hero-container" role="banner">
-      <video autoplay muted loop class="hero-video" aria-label="Una explosión de tinta lila y purpurina sobre el título del estudio de tatuajes llamado Witch Tattoo Studio">
+      <video autoplay muted loop class="hero-video">
         <source src="/1.mp4" type="video/mp4" />
       </video>
 
@@ -64,7 +73,6 @@ import FAQSection from '../components/FAQSection.vue'
       <section id="FAQ" class="section-bg">
         <FAQSection />
       </section>
-
     </main>
 
     <!-- Footer -->
@@ -100,34 +108,46 @@ html {
 
 .logo-link {
   font-weight: bold;
-  color: #FF2E2E; /* texto logo más visible */
+  color: #FF2E2E; 
   text-decoration: none;
   font-size: 1.2rem;
   text-shadow: 1px 1px 0 #000000;
 }
 
 .logo-link:hover {
-  color: #FF2E2E; /* hover rojo */
+  color: #FF2E2E;
 }
 
-.nav-links { display: flex; gap: 2rem; }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
 
 .nav-links a {
-  color: #F5F5F5; /* texto legible sobre fondo oscuro */
+  color: #F5F5F5;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s, text-shadow 0.2s;
 }
 
 .nav-links a:hover {
-  color: #FF2E2E; /* hover rojo */
+  color: #FF2E2E;
   text-shadow: 1px 1px 0 #000;
 }
 
+/* Contenedor botón y logos */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Botón reservas */
 .reserva-btn-menu {
   padding: 0.6rem 1.8rem;
   background: linear-gradient(45deg, #490368, #dac0f5);
-  color: #F5F5F5; /* texto visible */
+  color: #F5F5F5;
   font-weight: bold;
   border-radius: 12px;
   text-decoration: none;
@@ -140,7 +160,50 @@ html {
 .reserva-btn-menu:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(218, 192, 245, 0.8);
-  color: #FF2E2E; /* hover rojo */
+  color: #FF2E2E;
+}
+
+/* =======================
+   Logos sociales
+======================= */
+.social-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  border-radius: 50%;
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,46,46,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon:hover::before {
+  width: 80px;
+  height: 80px;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
 }
 
 /* =======================
@@ -177,6 +240,9 @@ html {
   align-items: center;
 }
 
+/* =======================
+   Fondo y efectos
+======================= */
 .footer-section {
   position: relative;
   z-index: 3;
@@ -185,7 +251,7 @@ html {
 .bg-container {
   position: relative;
   min-height: 100vh;
-  background: #2E1A47; /* fondo original */
+  background: #2E1A47;
   overflow-x: hidden;
 }
 

@@ -14,10 +14,15 @@
     </div>
 
     <!-- Redes sociales -->
-    <div class="footer-social">
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
-    </div>
+   <div class="footer-social">
+  <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer" class="social-icon">
+    <img src="/Logos/instagram.svg" alt="Instagram">
+  </a>
+  <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="social-icon">
+    <img src="/Logos/whatsapp.svg" alt="WhatsApp">
+  </a>
+</div>
+
   </footer>
 </template>
 
@@ -106,4 +111,13 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+/* Iconos de redes sociales */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
 </style>
