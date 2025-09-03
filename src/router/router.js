@@ -47,7 +47,19 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Si hay hash, hace scroll al id correspondiente
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
+    // Scroll al top si no hay hash
+    return { top: 0 }
+  }
 })
+
 
 export default router

@@ -30,9 +30,9 @@ const services = [
     desc: 'Diseños personalizados y exclusivos para ti.'
   },
   {
-    title: 'Reinventa tu tatuaje (Cover up)',
+    title: 'Reinventa tu tatuaje',
     video: '/coverup.mp4',
-    desc: 'Transformamos y mejoramos tatuajes antiguos.'
+    desc: 'Cover up: Transformamos y mejoramos tatuajes antiguos.'
   },
   {
     title: 'Tatuamos tu idea',
@@ -55,25 +55,27 @@ const services = [
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.1); /* opcional, semitransparente para ver humo detrás */
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   box-shadow: 0 2px 8px #0001;
   padding: 1.5rem;
   text-align: center;
-  width: 220px;
+  width: 280px; /* antes 220px, ahora más amplio */
 }
+
 
 
 .media {
   width: 100%;
-  height: 120px;
+  aspect-ratio: 16 / 9; /* mantiene proporción widescreen */
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 1rem;
 }
 
+
 h3 {
   margin-bottom: 0.5rem;
-  color: #b48a78;
+  color: #FF2E2E;
 }
 </style>

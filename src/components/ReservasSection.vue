@@ -1,7 +1,7 @@
 <template>
   <div class="reservas-section">
-    <h2>¿Te animas a inmortalizar tu idea?</h2>
-    <p>Haz clic y convierte tu idea en tinta.</p>
+    <h2 class="cta-title">¿Te animas a inmortalizar tu idea?</h2>
+    <p class="cta-text">Haz clic y convierte tu idea en tinta.</p>
     <a href="/reservas" target="_blank" rel="noopener noreferrer" class="reserva-btn">
       ¡Quiero tatuarme!
     </a>
@@ -16,13 +16,38 @@ export default {}
 .reservas-section {
   text-align: center;
   padding: 3rem 1rem;
-  background: transparent; /* fondo transparente para ver parallax global */
-  color: #F5F5F5; /* texto sobre fondo oscuro global */
+  background: transparent;
   font-family: sans-serif;
   position: relative;
   z-index: 2;
 }
 
+/* Call to action principal */
+.cta-title {
+  font-size: clamp(2.5rem, 6vw, 4rem); /* tamaño grande y responsive */
+  font-weight: bold;
+  color: #FF2E2E;
+  display: inline-block;
+  animation: pulse 1.5s infinite ease-in-out;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5); /* sombra para destacar */
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Párrafo debajo */
+.cta-text {
+  color: #F5F5F5;
+  font-size: 1.4rem; /* más grande */
+  margin-bottom: 2rem;
+}
+
+/* Botón */
 .reserva-btn {
   display: inline-block;
   margin-top: 2rem;

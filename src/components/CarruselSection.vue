@@ -60,7 +60,6 @@ const images = [
 
   { src: '/Carrusel/color/1.webp', style: 'Color' },
   { src: '/Carrusel/color/2.webp', style: 'Color' },
-  { src: '/Carrusel/color/4.webp', style: 'Color' },
   { src: '/Carrusel/color/5.webp', style: 'Color' },
   { src: '/Carrusel/color/6.webp', style: 'Color' },
   { src: '/Carrusel/color/7.webp', style: 'Color' },
@@ -171,11 +170,13 @@ onUnmounted(() => {
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
+  font-family: 'Pirata', sans-serif; /* nueva fuente */
+  font-size: 1.3rem; /* tamaño aumentado */
   transition: background 0.3s, color 0.3s;
 }
 
 .filters button.active {
-  background: #b48a78;
+  background: #FF2E2E;
   color: #fff;
 }
 

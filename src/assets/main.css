@@ -1,3 +1,6 @@
+/* =======================
+   Fuentes
+======================= */
 @font-face {
   font-family: 'Pirata';
   src: url('/Fonts/Pirata/Pirata.woff2') format('woff2'),
@@ -16,13 +19,249 @@
   font-display: swap;
 }
 
-/* Aplicar globalmente */
+@font-face {
+  font-family: 'Fleur De Leah';
+  src: url('/Fonts/Fleur de Leah/hinted-subset-FleurDeLeah-Regular.woff2') format('woff2'),
+       url('/Fonts/Fleur de Leah/hinted-subset-FleurDeLeah-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =======================
+   Estilos globales
+======================= */
+h1, h2, h3, h4, p, a, button {
+  color: #F5F5F5; /* texto claro sobre fondo oscuro */
+}
+
 h2, h3, h4 {
   font-family: 'Pirata', sans-serif;
-  font-style: normal;
+}
+
+p, a, h1 {
+  font-family: 'Almendra', serif;
+}
+
+/* =======================
+   Menú principal (nav)
+======================= */
+.main-nav,
+.nav-links a,
+.reserva-btn-menu {
+  font-family: 'Pirata', serif !important;
+}
+
+.nav-links a {
+  color: #F5F5F5 !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.3rem !important;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-links a:hover { 
+  color: #FF2E2E !important; /* hover alto contraste */
+  text-shadow: 1px 1px 0 #000;
+}
+
+.logo-link {
+  font-family: 'Fleur De Leah', cursive !important;
+  font-weight: bold;
+  color: #FF2E2E;
+  text-decoration: none;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-shadow: 1px 1px 0 #000000;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.logo-link:hover {
+  color: #FF2E2E;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.reserva-btn-menu {
+  color: #FFFFFF !important;
+  background-color: #FF2E2E;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.35rem !important;
+  transition: all 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 5px rgba(255,255,255,0.4);
+}
+
+.reserva-btn-menu:hover {
+  background-color: #e01f1f;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(255,46,46,0.7);
+}
+
+/* =======================
+   Footer
+======================= */
+.footer-section {
+  font-family: 'Pirata', serif !important;
+  background: #e0d6ce;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.35rem !important;
+  position: relative;
+  z-index: 3;
+}
+
+.footer-logo,
+.footer-links,
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-logo a {
+  font-family: 'Fleur De Leah', cursive !important;
+  font-weight: bold;
+  color: #FF2E2E;
+  text-decoration: none;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-shadow: 1px 1px 0 #F5F5F5;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.footer-logo a:hover {
+  color: #FF2E2E;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.footer-links a,
+.footer-social a {
+  font-family: 'Pirata', serif !important;
+  font-size: 1.3rem !important;
+  color: #111; /* buen contraste sobre fondo claro */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  color: #FF2E2E;
+}
+
+/* =======================
+   Hero video
+======================= */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-container {
+  position: relative;
+  min-height: 100vh;
+  background: #2E1A47;
+  overflow-x: hidden;
+}
+
+.section-bg {
+  position: relative;
+  z-index: 2;
+}
+
+.smoke3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/Texturas/fondo.webp");
+  background-repeat: repeat;
+  opacity: 0.1;
+  filter: blur(4px);
+  animation: moveSmoke 220s linear infinite;
+  z-index: 1;
+}
+
+@keyframes moveSmoke {
+  from { background-position: 0 0; }
+  to   { background-position: 2000px 2000px; }
+}
+
+/* =======================
+   Logo sparkle
+======================= */
+.logo-link::before,
+.logo-link::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: sparkle 3s infinite ease-in-out;
+  z-index: 2;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: translate(0,0) scale(0); opacity: 0; }
+  50% { transform: translate(5px,-5px) scale(1); opacity: 1; }
+}
+
+/* =======================
+   Tipografía general ajustada
+======================= */
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 1.9rem;
+}
+
+h4 {
+  font-size: 1.6rem;
 }
 
 p {
-  font-family: 'Almendra', serif;
-  font-style: normal;
+  font-size: 1.3rem;
+  line-height: 1.7;
+}
+a {
+  font-size: 1.3rem;
 }
