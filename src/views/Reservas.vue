@@ -1,16 +1,30 @@
 <template>
-  <!-- Menú fijo igual que Home, sin botón -->
-  <nav class="main-nav">
+  <!-- Menú fijo igual que Home -->
+  <nav class="main-nav" role="navigation" aria-label="Menú principal">
     <div class="nav-container">
+      <!-- Logo -->
       <router-link to="/" class="logo-link">Witch Tattoo Studio</router-link>
+
+      <!-- Enlaces con scroll hash -->
       <div class="nav-links">
         <router-link :to="{ path: '/', hash: '#Carrusel' }">Galería</router-link>
         <router-link :to="{ path: '/', hash: '#ServicesSection' }">Servicios</router-link>
         <router-link :to="{ path: '/', hash: '#FAQ' }">FAQ</router-link>
       </div>
+
+      <!-- Iconos sociales -->
+      <div class="social-icons">
+        <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer">
+          <img src="/Logos/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer">
+          <img src="/Logos/whatsapp.svg" alt="WhatsApp">
+        </a>
+      </div>
     </div>
   </nav>
 
+  <!-- Contenedor de reservas con fondo -->
   <div class="reservas-page">
     <div class="overlay"></div>
     <div class="reservas-container">
@@ -114,7 +128,7 @@ const enviarReserva = async () => {
 .success { color: green; font-weight: bold; margin-bottom: 1rem; }
 .error { color: red; font-weight: bold; margin-bottom: 1rem; }
 
-/* Menú igual que Home */
+/* Menú fijo */
 .main-nav {
   position: fixed;
   top: 0;
@@ -142,8 +156,7 @@ const enviarReserva = async () => {
   text-shadow: 1px 1px 0 #F5F5F5;
   transition: color 0.2s;
 }
-
-.logo-link:hover { color: #8800f7; }
+.logo-link:hover { color: #ffffff; }
 
 .nav-links a {
   font-family: 'Almendra', serif !important;
@@ -154,10 +167,50 @@ const enviarReserva = async () => {
   transition: color 0.2s;
   margin-left: 1.5rem;
 }
-
 .nav-links a:hover { color: #FF2E2E; }
 
-/* Fondo reservas usando ruta pública */
+/* Iconos sociales */
+
+/* Iconos sociales */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #FF2E2E; /* Círculo rojo igual que Home */
+}
+
+.social-icons img {
+  width: 24px; /* tamaño del logo igual que Home */
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1); /* pequeño efecto de zoom al hover */
+}
+
+.main-nav .social-icon img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.main-nav .social-icon img:hover {
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,0.8));
+} 
+
+/* Fondo reservas */
 .reservas-page {
   min-height: 100vh;
   display: flex;
@@ -177,6 +230,7 @@ const enviarReserva = async () => {
   z-index: 1;
 }
 
+/* Contenedor semitransparente */
 .reservas-container {
   position: relative;
   z-index: 2;
@@ -190,7 +244,13 @@ const enviarReserva = async () => {
   font-family: 'Almendra', serif;
 }
 
-.reservas-title { font-size: 2.2rem; text-align: center; margin-bottom: 1.5rem; color: #b22222; letter-spacing: 2px; }
+.reservas-title { 
+  font-size: 2.2rem; 
+  text-align: center; 
+  margin-bottom: 1.5rem; 
+  color: #b22222; 
+  letter-spacing: 2px; 
+}
 
 .reservas-form { display: flex; flex-direction: column; gap: 1rem; }
 
@@ -235,7 +295,6 @@ const enviarReserva = async () => {
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .fecha-hora label { flex: 1; }
 
 @keyframes fadeIn { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }

@@ -76,7 +76,7 @@ p, a, h1 {
 }
 
 .logo-link:hover {
-  color: #FF2E2E;
+  color: #ffffff;
   text-shadow: 1px 1px 2px #000;
 }
 
@@ -226,7 +226,7 @@ p, a, h1 {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+  background: radial-gradient(circle, #b12aff 0%, transparent 70%);
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;

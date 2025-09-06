@@ -117,7 +117,7 @@ html {
 }
 
 .logo-link:hover {
-  color: #FF2E2E;
+  color: #ffffff;
 }
 
 .nav-links {
@@ -161,6 +161,17 @@ html {
   display: block;
   z-index: 2;
   position: relative;
+}
+
+/*Solo iconos del menú fijo en blanco*/
+
+.main-nav .social-icon img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.main-nav .social-icon img:hover {
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,0.8));
 }
 
 /* Círculo rojo al pasar el ratón */

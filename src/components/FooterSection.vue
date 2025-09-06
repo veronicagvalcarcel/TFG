@@ -1,123 +1,159 @@
 <template>
   <footer class="footer-section">
-    <!-- Logo del footer que lleva a Home -->
-    <div class="footer-logo">
-      <router-link to="/" class="footer-logo-link">Witch Tattoo Studio</router-link>
+    <div class="footer-grid">
+      <!-- Logo con sparkles -->
+      <div class="footer-logo">
+        <router-link to="/" class="footer-logo-link">Witch Tattoo Studio</router-link>
+      </div>
+
+      <!-- Enlaces de políticas -->
+      <div class="footer-links">
+        <router-link to="/Politicas" target="_blank">Políticas de Privacidad</router-link>
+        <router-link to="/Proteccion_datos" target="_blank">Protección de Datos</router-link>
+        <router-link to="/Aviso_legal" target="_blank">Aviso Legal</router-link>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <img src="/Logos/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <img src="/Logos/whatsapp.svg" alt="WhatsApp">
+        </a>
+      </div>
     </div>
-
-    <!-- Links del footer -->
-    <div class="footer-links">
-      <a href="#Carrusel">Galería</a>
-      <a href="#ServicesSection">Servicios</a>
-      <a href="#FAQ">FAQ</a>
-      <router-link to="/reservas" class="footer-reserva-link">¡Quiero tatuarme!</router-link>
-    </div>
-
-    <!-- Redes sociales -->
-   <div class="footer-social">
-  <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer" class="social-icon">
-    <img src="/Logos/instagram.svg" alt="Instagram">
-  </a>
-  <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="social-icon">
-    <img src="/Logos/whatsapp.svg" alt="WhatsApp">
-  </a>
-</div>
-
   </footer>
 </template>
 
+<script setup></script>
+
 <style scoped>
 .footer-section {
-  font-family: 'Almendra', serif !important;
+  font-family: 'Pirata', serif !important;
   background: #e0d6ce;
   padding: 2rem 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  font-size: 1.35rem !important;
+}
+
+/* Grid para evitar solapamientos */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
-  font-size: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
-/* Sparkle lila */
-@keyframes sparkle-lila {
-  0%, 100% { opacity: 0; transform: scale(0.5) translate(0,0); }
-  50% { opacity: 1; transform: scale(1) translate(5px,-5px); }
-}
-
-/* Logo del footer */
+/* Logo con sparkles */
 .footer-logo-link {
+  position: relative;
   font-family: 'Fleur De Leah', cursive !important;
   font-weight: bold;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
   color: #FF2E2E;
   text-decoration: none;
-  text-shadow: 1px 1px 0 #000000;
-  transition: color 0.2s;
-  position: relative; /* necesario para los ::before y ::after */
-  display: inline-block; /* aseguramos que los pseudo-elementos se posicionen correctamente */
-  z-index: 1; /* encima del fondo */
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-shadow: 1px 1px 0 #F5F5F5;
 }
 
-/* Sparkles lila */
 .footer-logo-link::before,
 .footer-logo-link::after {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #51086e 0%, transparent 70%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #FF2E2E 0%, transparent 70%);
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
-  animation: sparkle-lila 3s infinite ease-in-out;
+  animation: sparkle 3s infinite ease-in-out;
   z-index: 2;
 }
 
-.footer-logo-link::before { top: -5px; left: 10%; animation-delay: 0s; }
-.footer-logo-link::after { bottom: -5px; right: 10%; animation-delay: 1.5s; }
-
-@keyframes sparkle-lila {
-  0%, 100% { opacity: 0; transform: scale(0.5) translate(0,0); }
-  50% { opacity: 1; transform: scale(1) translate(5px,-5px); }
+@keyframes sparkle {
+  0%, 100% { transform: translate(0,0) scale(0); opacity: 0; }
+  50% { transform: translate(5px,-5px) scale(1); opacity: 1; }
 }
 
-
-.footer-logo-link:hover {
-  color: #000000;
+/* Enlaces de políticas */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* Links del footer */
-.footer-links a,
-.footer-social a,
-.footer-reserva-link {
-  font-family: 'Almendra', serif !important;
-  font-size: 1rem;
-  color: #222;
+.footer-links a {
+  font-family: 'Pirata', serif !important;
+  font-size: 1.3rem !important;
+  color: #111;
   text-decoration: none;
-  margin-right: 1.2rem;
   transition: color 0.2s;
 }
 
-.footer-links a:hover,
-.footer-social a:hover,
-.footer-reserva-link:hover {
+.footer-links a:hover {
   color: #FF2E2E;
 }
 
-/* Separación de links en footer */
-.footer-links,
+/* Iconos sociales */
 .footer-social {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 1rem;
 }
 
-/* Iconos de redes sociales */
-.footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem 0;
+.social-icon {
+  display: inline-flex;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: visible;
+  transition: transform 0.3s ease;
 }
 
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,46,46,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon:hover::before {
+  width: 60px;
+  height: 60px;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive móvil */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+}
 </style>

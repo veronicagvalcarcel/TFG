@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+// Importar vistas
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Services from '../views/Services.vue'
 import Carrusel from '../views/Carrusel.vue'
 import Reservas from '../views/Reservas.vue'
 import FAQ from '../views/FAQ.vue'
-import Admin from '../views/Admin.vue'
+
+
+// Páginas legales
+import AvisoLegal from '../views/Aviso_legal.vue'
+import Politicas from '../views/Politicas.vue'
+import ProteccionDatos from '../views/Proteccion_datos.vue'
 
 const routes = [
   {
@@ -39,9 +46,22 @@ const routes = [
     component: FAQ
   },
   {
-    path: '/admin',
-    name: 'admin',
-    component: Admin
+  },
+  // Rutas legales
+  {
+    path: '/aviso_legal',
+    name: 'aviso_legal',
+    component: AvisoLegal
+  },
+  {
+    path: '/politicas',
+    name: 'politicas',
+    component: Politicas
+  },
+  {
+    path: '/proteccion_datos',
+    name: 'proteccion_datos',
+    component: ProteccionDatos
   }
 ]
 
@@ -60,6 +80,5 @@ const router = createRouter({
     return { top: 0 }
   }
 })
-
 
 export default router
