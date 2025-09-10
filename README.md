@@ -6,7 +6,7 @@
 
 - Diseño responsive y visualmente atractivo.
 - Efecto de parallax con video de fondo en el header.
-- Navegación por secciones (`Inicio`, `Galería`, `Servicios`, `Reservas`, `FAQ`) mediante anclas internas.
+- Navegación por secciones (`Inicio`, `Carrusel`, `Servicios`, `Reservas`, `FAQ`) mediante anclas internas.
 - Scroll suave y experiencia fluida en dispositivos móviles.
 - Integración de componentes reutilizables (`Header`, `Footer`, `ReservasForm`, etc.).
 - Estructura clara y mantenible del código frontend.
@@ -48,17 +48,44 @@ npm install
 ```bash
 npm run dev
 ```
-4. Abre tu navegador en http://localhost:5173
+Ahora, es posible visitar la página desde https://localhost:5173.
 
+### Backend
 
-🛠️ Tecnologías utilizadas
+Para ejecutar el backend:
+
+```sh
+docker compose exec app bash
+```
+
+Una vez hecho esto, es posible utilizar las funciones de backend como el sistema de reservas.
+
+## Database
+
+Para entrar en la base de datos y poder consultarla:
+
+```sh
+docker compose exec db -u postgres -db tatuadora-db
+```
+
+Una vez logueado en la base de datos, se pueden ejecutar consultas como:
+
+```sql
+select * from citas;
+select * from clientes;
+```
+
+## 🛠️ Tecnologías utilizadas
+
 Frontend: Vue 3 + Vite
 
 Estilos: CSS con diseño responsive y parallax
 
 Routing interno: Scroll suave con navegación anclada
 
-Backend (opcional): Laravel (incluido en /tatuadora-backend)
+Backend: Laravel
+
+Base de datos: PostgreSQL
 
 ## 📁 Ramas de desarrollo
 

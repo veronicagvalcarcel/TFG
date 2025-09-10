@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
             $table->date('fecha');
             $table->time('hora');
+            $table->string('ubicacion')->default('Sa Coma'); // nuevo campo para ubicación
             $table->string('estado')->default('pendiente');
             $table->text('notas')->nullable();
             $table->timestamps();
