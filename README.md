@@ -91,7 +91,6 @@ Base de datos: PostgreSQL
 
 El proyecto se organiza mediante ramas específicas para cada funcionalidad o componente. Esto facilita el trabajo en paralelo y el control de versiones.
 
-
 ### Cambiar a una rama específica
 
 ```bash
