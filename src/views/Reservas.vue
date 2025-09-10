@@ -5,12 +5,27 @@
       <!-- Logo -->
       <router-link to="/" class="logo-link">Witch Tattoo Studio</router-link>
 
+      <!-- Botón hamburguesa (solo móvil) -->
+<button class="hamburger" @click="menuOpen = !menuOpen" aria-label="Abrir menú" :aria-expanded="menuOpen">
+  <span :class="{ open: menuOpen }"></span>
+  <span :class="{ open: menuOpen }"></span>
+  <span :class="{ open: menuOpen }"></span>
+</button>
+
+
       <!-- Enlaces con scroll hash -->
       <div class="nav-links">
         <router-link :to="{ path: '/', hash: '#Carrusel' }">Galería</router-link>
         <router-link :to="{ path: '/', hash: '#ServicesSection' }">Servicios</router-link>
         <router-link :to="{ path: '/', hash: '#FAQ' }">FAQ</router-link>
       </div>
+
+<div class="nav-links" :class="{ open: menuOpen }">
+  <router-link :to="{ path: '/', hash: '#Carrusel' }">Galería</router-link>
+  <router-link :to="{ path: '/', hash: '#ServicesSection' }">Servicios</router-link>
+  <router-link :to="{ path: '/', hash: '#FAQ' }">FAQ</router-link>
+</div>
+
 
       <!-- Iconos sociales -->
       <div class="social-icons">
@@ -91,7 +106,10 @@
 import { ref } from "vue";
 import axios from "axios";
 import FooterSection from '../components/FooterSection.vue';
+// Estado para el menú hamburguesa
+const menuOpen = ref(false);
 
+// Estado formulario reservas
 const nombre = ref("");
 const apellido = ref("");
 const correo = ref("");
@@ -384,4 +402,61 @@ const enviarReserva = async () => {
     transform: translateY(0);
   }
 }
+
+/* ===============================
+   Responsive (móvil/tablet)
+=============================== */
+@media (max-width: 900px) {
+  /* Mostrar hamburguesa */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Enlaces del menú desplegable */
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #2E1A47;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem 2rem 1.5rem 2rem;
+    display: none;
+    z-index: 1000;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Ocultar botón de reserva dentro del menú móvil */
+  .reserva-btn-menu.desktop-only {
+    display: none;
+  }
+
+  /* Ajustes de logo */
+  .logo-link {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  /* Ajustes de padding del nav container */
+  .nav-container {
+    padding: 0.5rem 1rem;
+    position: relative;
+  }
+
+  /* Enlaces dentro del menú móvil */
+  .nav-links a {
+    color: #fff !important;
+    font-size: 1.15rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 0.2rem 0;
+  }
+}
+
 </style>

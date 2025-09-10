@@ -6,6 +6,11 @@ import ReservasForm from '../components/ReservasSection.vue'
 import Carrusel from '../components/CarruselSection.vue'
 import FooterSection from '../components/FooterSection.vue'
 import FAQSection from '../components/FAQSection.vue' 
+import { ref } from 'vue'
+const menuOpen = ref(false)
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value
+}
 </script>
 
 <template>
@@ -21,11 +26,18 @@ import FAQSection from '../components/FAQSection.vue'
           Witch Tattoo Studio
         </router-link>
 
-        <!-- Enlaces con scroll hash -->
-        <div class="nav-links">
-          <router-link :to="{ path: '/', hash: '#Carrusel' }">Galería</router-link>
-          <router-link :to="{ path: '/', hash: '#ServicesSection' }">Servicios</router-link>
-          <router-link :to="{ path: '/', hash: '#FAQ' }">FAQ</router-link>
+        <!-- Botón hamburguesa solo visible en móvil/tablet -->
+        <button class="hamburger" @click="toggleMenu" aria-label="Abrir menú" aria-expanded="menuOpen">
+          <span :class="{ open: menuOpen }"></span>
+          <span :class="{ open: menuOpen }"></span>
+          <span :class="{ open: menuOpen }"></span>
+        </button>
+
+        <!-- Enlaces del menú hamburguesa -->
+        <div class="nav-links" :class="{ open: menuOpen }">
+          <router-link :to="{ path: '/', hash: '#Carrusel' }" @click="menuOpen = false">Galería</router-link>
+          <router-link :to="{ path: '/', hash: '#ServicesSection' }" @click="menuOpen = false">Servicios</router-link>
+          <router-link :to="{ path: '/', hash: '#FAQ' }" @click="menuOpen = false">FAQ</router-link>
         </div>
 
         <!-- Iconos sociales -->
@@ -292,74 +304,193 @@ html {
 ======================= */
 @media (max-width: 900px) {
   .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
-  .nav-links {
-    gap: 1rem;
-    font-size: 1rem;
-  }
-  .reserva-btn-menu {
-    margin-top: 1rem;
-    width: 100%;
-    text-align: center;
-  }
-}
 
-@media (max-width: 700px) {
-  .main-nav {
-    padding: 0.5rem 0;
+  .logo-link {
+    flex: 1 1 auto;
   }
-  .nav-container {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
+
+  .hamburger {
+    order: 2;
   }
-  .nav-links {
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    align-items: flex-start;
-  }
-  .social-icons {
-    margin-top: 0.5rem;
-  }
+
   .reserva-btn-menu {
-    width: 100%;
-    margin: 0.5rem 0 0 0;
+    order: 3;
+    flex: 1 1 100%; /* ocupa fila entera */
+    text-align: center;
+    margin-top: 0.5rem;
   }
 }
 
 /* =======================
    Responsive HERO/HEADER
 ======================= */
-@media (max-width: 1200px) {
-  .header-title {
-    font-size: 8vw !important;
-  }
+.header-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;   /* ocupa toda la pantalla */
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
 }
+
+.header-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* que no se deforme */
+  z-index: -1;         /* detrás del texto */
+}
+
+/* Títulos y texto encima del vídeo */
+.header-title {
+  font-size: clamp(2rem, 8vw, 5rem);
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  margin-bottom: 1rem;
+}
+
+.header-text {
+  font-size: clamp(1rem, 4vw, 2rem);
+  color: #eee;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Ajustes extra en pantallas pequeñas */
 @media (max-width: 700px) {
   .header-title {
-    font-size: 12vw !important;
     letter-spacing: 2px;
-  }
-  .header-text {
-    font-size: clamp(1.2rem, 5vw, 2rem) !important;
-    padding: 0 0.5rem;
   }
   .header-container {
     padding: 1rem 0.5rem;
   }
 }
+
 @media (max-width: 500px) {
-  .header-title {
-    font-size: 14vw !important;
-  }
   .header-container {
     padding: 0.5rem 0.2rem;
+  }
+}
+
+/* Hamburguesa oculta en escritorio */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger span.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger span.open:nth-child(2) { opacity: 0; }
+.hamburger span.open:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+/* Responsive: mostrar hamburguesa y menú desplegable en móvil/tablet */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem 2rem 1.5rem 2rem;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 0 0 18px 18px;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links a,
+  .nav-links .router-link-active {
+    color: #2E1A47 !important;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-shadow: none;
+    padding: 0.2rem 0;
+  }
+  .reserva-btn-menu {
+    margin-top: 1.2rem;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(45deg, #490368, #dac0f5);
+    color: #fff !important;
+    border-radius: 8px;
+    padding: 0.8rem 0;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    display: block;
+    font-size: 1.1rem;
+    box-shadow: 0 0 10px rgba(218, 192, 245, 0.3);
+    letter-spacing: 1px;
+  }
+  @media (max-width: 900px) {
+  .reserva-btn-menu {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    width: auto;         /* se ajusta al contenido */
+    text-align: center;
+  }
+}
+}
+
+/* En escritorio, menú horizontal normal */
+@media (min-width: 901px) {
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: 2rem;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    align-items: center;
+  }
+  .nav-links a {
+    color: #F5F5F5;
+  }
+  .reserva-btn-menu {
+    margin-left: 1.5rem;
+    background: linear-gradient(45deg, #490368, #dac0f5);
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.6rem 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+    font-size: 1rem;
+    letter-spacing: 1px;
   }
 }
 </style>
