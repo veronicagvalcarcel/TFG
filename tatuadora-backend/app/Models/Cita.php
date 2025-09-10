@@ -14,6 +14,7 @@ class Cita extends Model
         'fecha',
         'hora',
         'estado',
+        'ubicacion',
         'notas',
     ];
 

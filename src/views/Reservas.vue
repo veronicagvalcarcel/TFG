@@ -49,10 +49,22 @@
           <input type="email" placeholder="tucorreo@mail.com" v-model="correo" required />
         </label>
 
-        <label>
-          Teléfono:
-          <input type="tel" placeholder="Tu teléfono" v-model="telefono" required />
-        </label>
+        <div class="fecha-hora">
+          <label>
+            Teléfono:
+            <input type="tel" placeholder="Tu teléfono" v-model="telefono" required />
+          </label>
+
+          <label>
+            Ubicación:
+            <select v-model="ubicacion" required>
+              <option value="Sa Coma">Sa Coma</option>
+              <option value="El Hoyo">El Hoyo</option>
+              <option value="Izz Tattoo">Izz Tattoo</option>
+            </select>
+          </label>
+        </div>
+
 
         <div class="fecha-hora">
           <label>
@@ -86,6 +98,7 @@ const correo = ref("");
 const telefono = ref("");
 const fecha = ref("");
 const hora = ref("");
+const ubicacion = ref("");
 
 const mensaje = ref("");
 const error = ref("");
@@ -102,6 +115,7 @@ const enviarReserva = async () => {
       telefono: telefono.value,
       fecha: fecha.value,
       hora: hora.value,
+      ubicacion: ubicacion.value
     });
 
     mensaje.value = "Reserva enviada con éxito ✅";
@@ -112,7 +126,8 @@ const enviarReserva = async () => {
     telefono.value = "";
     fecha.value = "";
     hora.value = "";
-    
+    ubicacion.value = "";
+
   } catch (err) {
     if (err.response && err.response.status === 422) {
       error.value = err.response.data.error;
@@ -125,8 +140,17 @@ const enviarReserva = async () => {
 
 <style scoped>
 /* Mensajes */
-.success { color: green; font-weight: bold; margin-bottom: 1rem; }
-.error { color: red; font-weight: bold; margin-bottom: 1rem; }
+.success {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
 
 /* Menú fijo */
 .main-nav {
@@ -135,7 +159,7 @@ const enviarReserva = async () => {
   width: 100%;
   background: #2E1A47;
   z-index: 200;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
@@ -156,7 +180,10 @@ const enviarReserva = async () => {
   text-shadow: 1px 1px 0 #F5F5F5;
   transition: color 0.2s;
 }
-.logo-link:hover { color: #ffffff; }
+
+.logo-link:hover {
+  color: #ffffff;
+}
 
 .nav-links a {
   font-family: 'Almendra', serif !important;
@@ -167,7 +194,10 @@ const enviarReserva = async () => {
   transition: color 0.2s;
   margin-left: 1.5rem;
 }
-.nav-links a:hover { color: #FF2E2E; }
+
+.nav-links a:hover {
+  color: #FF2E2E;
+}
 
 /* Iconos sociales */
 
@@ -188,17 +218,20 @@ const enviarReserva = async () => {
 }
 
 .social-icons a:hover {
-  background-color: #FF2E2E; /* Círculo rojo igual que Home */
+  background-color: #FF2E2E;
+  /* Círculo rojo igual que Home */
 }
 
 .social-icons img {
-  width: 24px; /* tamaño del logo igual que Home */
+  width: 24px;
+  /* tamaño del logo igual que Home */
   height: 24px;
   transition: transform 0.3s;
 }
 
 .social-icons a:hover img {
-  transform: scale(1.1); /* pequeño efecto de zoom al hover */
+  transform: scale(1.1);
+  /* pequeño efecto de zoom al hover */
 }
 
 .main-nav .social-icon img {
@@ -207,8 +240,8 @@ const enviarReserva = async () => {
 }
 
 .main-nav .social-icon img:hover {
-  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,0.8));
-} 
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
 
 /* Fondo reservas */
 .reservas-page {
@@ -226,7 +259,7 @@ const enviarReserva = async () => {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 1;
 }
 
@@ -237,24 +270,34 @@ const enviarReserva = async () => {
   background: rgba(255, 255, 255, 0.92);
   padding: 2.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   max-width: 600px;
   width: 90%;
   animation: fadeIn 1.2s ease forwards;
   font-family: 'Almendra', serif;
 }
 
-.reservas-title { 
-  font-size: 2.2rem; 
-  text-align: center; 
-  margin-bottom: 1.5rem; 
-  color: #b22222; 
-  letter-spacing: 2px; 
+.reservas-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #b22222;
+  letter-spacing: 2px;
 }
 
-.reservas-form { display: flex; flex-direction: column; gap: 1rem; }
+.reservas-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-.reservas-form label { font-size: 1rem; color: #333; display: flex; flex-direction: column; font-weight: 500; }
+.reservas-form label {
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
 
 .reservas-form input,
 .reservas-form textarea {
@@ -270,7 +313,7 @@ const enviarReserva = async () => {
 .reservas-form textarea:focus {
   border-color: #b22222;
   outline: none;
-  box-shadow: 0 0 8px rgba(178,34,34,0.3);
+  box-shadow: 0 0 8px rgba(178, 34, 34, 0.3);
 }
 
 .reservas-form button {
@@ -295,7 +338,50 @@ const enviarReserva = async () => {
   gap: 1rem;
   flex-wrap: wrap;
 }
-.fecha-hora label { flex: 1; }
 
-@keyframes fadeIn { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
+.fecha-hora label {
+  flex: 1;
+}
+
+.telefono-ubicacion {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.telefono-ubicacion label {
+  flex: 1;
+}
+
+.reservas-form select {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  font-family: inherit;
+  margin-top: 0.4rem;
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.reservas-form select:focus {
+  border-color: #b22222;
+  outline: none;
+  box-shadow: 0 0 8px rgba(178, 34, 34, 0.3);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>

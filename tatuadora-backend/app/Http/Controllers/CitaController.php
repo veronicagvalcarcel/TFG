@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Cliente;
+use App\Mail\MailAvisoCita;
+use App\Mail\MailConfirmaCita;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+
 
 class CitaController extends Controller
 {
@@ -25,6 +31,7 @@ class CitaController extends Controller
             'telefono' => 'required|string|max:20',
             'fecha' => 'required|date',
             'hora' => 'required|date_format:H:i',
+            'ubicacion' => 'required|in:Sa Coma,El Hoyo,Izz Tattoo'
         ]);
 
         // Redondear la hora al múltiplo de 15 minutos más cercano
@@ -56,8 +63,18 @@ class CitaController extends Controller
             'cliente_id' => $cliente->id,
             'fecha' => $request->fecha,
             'hora' => $horaFormateada,
+            'ubicacion' => $request->ubicacion,
             'estado' => 'pendiente',
         ]);
+
+        // Enviar correo de aviso al tatuador
+        try {
+            Mail::to('veronicagelabert8@gmail.com')->send(new MailAvisoCita($cita));
+        } catch (\Exception $e) {
+            // Solo loguear el error, no interrumpir
+            Log::error('Error al enviar correo: ' . $e->getMessage());
+        }
+
 
         return response()->json([
             'cliente' => $cliente,
@@ -82,6 +99,7 @@ class CitaController extends Controller
             'telefono' => 'required|string|max:20',
             'fecha' => 'required|date',
             'hora' => 'required|date_format:H:i',
+            'ubicacion' => 'required|string|max:255',
         ]);
 
         $cita = Cita::findOrFail($id);
@@ -95,5 +113,31 @@ class CitaController extends Controller
     {
         Cita::findOrFail($id)->delete();
         return response()->json(null, 204);
+    }
+
+    // Confirmar una cita
+    public function confirm($id)
+    {
+        $cita = Cita::with('cliente')->findOrFail($id);
+
+        if ($cita->estado === 'confirmado') {
+            return response()->json(['message' => 'La cita ya estaba confirmada.']);
+        }
+
+        $cita->estado = 'confirmada';
+        $cita->save();
+
+        // Mandar correo al cliente
+        try {
+            Mail::to($cita->cliente->correo)->send(new MailConfirmaCita($cita));
+        } catch (\Exception $e) {
+            Log::error('Error al enviar correo de confirmación: ' . $e->getMessage());
+        }
+
+
+        return response()->json([
+            'message' => 'Cita confirmada y correo enviado al cliente.',
+            'cita' => $cita,
+        ]);
     }
 }
