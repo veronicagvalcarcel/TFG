@@ -286,4 +286,80 @@ html {
   from { background-position: 0 0; }
   to   { background-position: 2000px 2000px; }
 }
+
+/* =======================
+   Responsive NAV
+======================= */
+@media (max-width: 900px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  .reserva-btn-menu {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-nav {
+    padding: 0.5rem 0;
+  }
+  .nav-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+  .reserva-btn-menu {
+    width: 100%;
+    margin: 0.5rem 0 0 0;
+  }
+}
+
+/* =======================
+   Responsive HERO/HEADER
+======================= */
+@media (max-width: 1200px) {
+  .header-title {
+    font-size: 8vw !important;
+  }
+}
+@media (max-width: 700px) {
+  .header-title {
+    font-size: 12vw !important;
+    letter-spacing: 2px;
+  }
+  .header-text {
+    font-size: clamp(1.2rem, 5vw, 2rem) !important;
+    padding: 0 0.5rem;
+  }
+  .header-container {
+    padding: 1rem 0.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .header-title {
+    font-size: 14vw !important;
+  }
+  .header-container {
+    padding: 0.5rem 0.2rem;
+  }
+}
 </style>

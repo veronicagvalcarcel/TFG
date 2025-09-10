@@ -151,4 +151,22 @@ export default {}
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+
+/* Responsive header */
+@media (max-width: 900px) {
+  .header-title {
+    font-size: 8vw;
+  }
+  .header-text {
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+  }
+}
+@media (max-width: 600px) {
+  .header-title {
+    font-size: 12vw;
+  }
+  .header-container {
+    padding: 1rem 0.2rem;
+  }
+}
 </style>
