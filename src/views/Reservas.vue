@@ -14,11 +14,6 @@
 
 
       <!-- Enlaces con scroll hash -->
-      <div class="nav-links">
-        <router-link :to="{ path: '/', hash: '#Carrusel' }">Galería</router-link>
-        <router-link :to="{ path: '/', hash: '#ServicesSection' }">Servicios</router-link>
-        <router-link :to="{ path: '/', hash: '#FAQ' }">FAQ</router-link>
-      </div>
 
 <div class="nav-links" :class="{ open: menuOpen }">
   <router-link :to="{ path: '/', hash: '#Carrusel' }">Galería</router-link>
@@ -28,14 +23,15 @@
 
 
       <!-- Iconos sociales -->
-      <div class="social-icons">
-        <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer">
-          <img src="/Logos/instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer">
-          <img src="/Logos/whatsapp.svg" alt="WhatsApp">
-        </a>
-      </div>
+<!-- Iconos sociales -->
+<div class="social-icons">
+  <a class="social-icon" href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer">
+    <img src="/Logos/instagram.svg" alt="Instagram">
+  </a>
+  <a class="social-icon" href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer">
+    <img src="/Logos/whatsapp.svg" alt="WhatsApp">
+  </a>
+</div>
     </div>
   </nav>
 
@@ -223,34 +219,28 @@ const enviarReserva = async () => {
 .social-icons {
   display: flex;
   gap: 1rem;
-}
-
-.social-icons a {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
+}
+
+.social-icon {
+  display: inline-flex;
+  position: relative;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  transition: background 0.3s;
+  overflow: visible;
+  transition: transform 0.3s ease;
 }
 
-.social-icons a:hover {
-  background-color: #FF2E2E;
-  /* Círculo rojo igual que Home */
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+  position: relative;
 }
 
-.social-icons img {
-  width: 24px;
-  /* tamaño del logo igual que Home */
-  height: 24px;
-  transition: transform 0.3s;
-}
-
-.social-icons a:hover img {
-  transform: scale(1.1);
-  /* pequeño efecto de zoom al hover */
-}
+/*Solo iconos del menú fijo en blanco*/
 
 .main-nav .social-icon img {
   filter: brightness(0) invert(1);
@@ -258,7 +248,31 @@ const enviarReserva = async () => {
 }
 
 .main-nav .social-icon img:hover {
-  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,0.8));
+}
+
+/* Círculo rojo al pasar el ratón */
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,46,46,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon:hover::before {
+  width: 60px;
+  height: 60px;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
 }
 
 /* Fondo reservas */
