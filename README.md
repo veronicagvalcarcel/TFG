@@ -40,14 +40,22 @@ git clone https://github.com/tu-usuario/tatuadora-web.git
 cd tatuadora-web
 ```
 
-2. Instala las dependencias:
-```bash
-npm install
+El proyecto se puede ejecutar utilizando Docker. Primero, levantamos todos los contenedores en modo daemon para no ocupar la sesión de terminal:
 
-3. Inicia el servidor de desarrollo:
-```bash
-npm run dev
+```sh
+docker compose up -d
 ```
+
+Una vez los contenedores están activos, podemos ejecutar los servicios.
+
+### Frontend
+
+Para ejecutar el frontend:
+
+```sh
+docker compose exec vue bash
+```
+
 Ahora, es posible visitar la página desde https://localhost:5173.
 
 ### Backend
@@ -65,7 +73,7 @@ Una vez hecho esto, es posible utilizar las funciones de backend como el sistema
 Para entrar en la base de datos y poder consultarla:
 
 ```sh
-docker compose exec db -u postgres -db tatuadora-db
+docker compose exec db psql -U postgres -d "tatuadora-db"
 ```
 
 Una vez logueado en la base de datos, se pueden ejecutar consultas como:
@@ -74,6 +82,16 @@ Una vez logueado en la base de datos, se pueden ejecutar consultas como:
 select * from citas;
 select * from clientes;
 ```
+
+#### Anexo: Simulación de envío de emails
+
+Para verificar que la simulación del envio de email funciona correctamente, se puede entrar en el contenedor del backend y ejecutar el siguiente comando:
+
+```sh
+docker compose exec app tail -f storage/logs/laravel.log 
+```
+
+Esto mostratrá los logs del backend, incluyendo los envíos de email simulados y el link de confirmación de la cita.
 
 ## 🛠️ Tecnologías utilizadas
 
