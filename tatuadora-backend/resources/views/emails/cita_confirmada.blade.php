@@ -1,4 +1,4 @@
-¡Hola {{ $nombre }}!
+¡Hola!
 
 Tu cita en {{ $ubicacion }} con Witch Tattoo ha sido confirmada:
 

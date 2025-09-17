@@ -15,18 +15,75 @@
 ## 🧱 Estructura del proyecto
 
 ```
+🧱 Frontend (Vue.js) estructura de carpetas:
+
+src/
 tatuadora-web/
-├── public/
-│   └── 1.mp4                 # Video para header con parallax
+├── public/                   # Archivos estáticos (imágenes, vídeos, favicon, fonts)
 ├── src/
-│   ├── components/           # Componentes Vue reutilizables
-│   ├── views/                # Vistas como Home.vue (SPA principal)
-│   ├── assets/               # Imágenes y recursos estáticos
-│   ├── App.vue               # Entry point
-│   └── main.js               # Configuración de Vue
-├── tatuadora-backend/       # Carpeta backend (Laravel)
-├── package.json
-└── README.md
+│   ├── assets/               # Archivos estáticos usados en el frontend (CSS)
+│   │   └── main.css          # Estilos globales
+│   ├── api/                  # Configuración de Axios y llamadas a APIs
+│   │   └── axios.js
+│   ├── components/       # Componentes reutilizables (secciones y bloques UI)
+│   │   ├── AboutSection.vue
+│   │   ├── CarruselSection.vue
+│   │   ├── FAQSection.vue
+│   │   ├── FooterSection.vue
+│   │   ├── HeaderSection.vue
+│   │   ├── ReservasSection.vue
+│   │   └── ServicesSection.vue
+│   ├── router/               # Configuración de rutas (Vue Router)
+│   │   └── router.js
+│   ├── services/             # Servicios para lógica de negocio o llamadas a API
+│   │   └── citaService.js
+│   ├── views/                # Vistas principales (páginas del sitio)
+│   │   ├── About.vue
+│   │   ├── Aviso_legal.vue
+│   │   ├── Carrusel.vue
+│   │   ├── FAQ.vue
+│   │   ├── Home.vue
+│   │   ├── Politicas.vue
+│   │   ├── Proteccion_datos.vue
+│   │   ├── Reservas.vue
+│   │   └── Services.vue
+│   ├── App.vue               # Componente raíz de la aplicación
+│   └── main.js               # Punto de entrada de la app Vue
+├── index.html                # HTML principal
+├── package.json              # Dependencias y scripts del proyecto
+└── vite.config.js            # Configuración de Vite
+
+🧱 Backend (Laravel) estructura principal:
+
+src/
+tatuadora-backend/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/      # Controladores de la lógica (CitaController, etc.)
+│   ├── Mail/             # Clases para envío de correos (MailAvisoCita, MailConfirmaCita)
+│   ├── Models/               # Modelos Eloquent (Cliente, Cita, Usuario)
+│   └── Providers/            # Proveedores de servicios
+├── bootstrap/                # Archivos de arranque de Laravel
+├── config/                   # Configuración de la app (base de datos, mail, etc.)
+├── database/
+│   ├── factories/            # Fábricas para tests/seeds
+│   ├── migrations/           # Migraciones de base de datos
+│   └── seeders/              # Seeders para poblar la base de datos
+├── public/                   # Punto de entrada web (index.php)
+├── resources/
+│   ├── css/                  # CSS 
+│   ├── js/                   # JS (bootstrap.js, etc.)
+│   └── views/                # Vistas Blade (emails, welcome.blade.php, etc.)
+├── routes/                   # Definición de rutas (web.php, api.php)
+├── storage/                  # Archivos generados (logs, caché, etc.)
+├── tests/                    # Tests automáticos
+├── vendor/                   # Dependencias Composer
+├── .env                      # Configuración de entorno
+├── artisan                   # CLI de Laravel
+├── composer.json             # Dependencias PHP
+├── package.json              # Dependencias JS (si usas Laravel Mix/Vite)
+└── README.md                 # Documentación del proyecto
+
 ```
 
 
@@ -39,6 +96,7 @@ tatuadora-web/
 git clone https://github.com/tu-usuario/tatuadora-web.git
 cd tatuadora-web
 ```
+## 🐳 DOCKER 
 
 El proyecto se puede ejecutar utilizando Docker. Primero, levantamos todos los contenedores en modo daemon para no ocupar la sesión de terminal:
 
@@ -48,7 +106,7 @@ docker compose up -d
 
 Una vez los contenedores están activos, podemos ejecutar los servicios.
 
-### Frontend
+### 🎨 Frontend
 
 Para ejecutar el frontend:
 
@@ -56,46 +114,48 @@ Para ejecutar el frontend:
 docker compose exec vue bash
 ```
 
-Ahora, es posible visitar la página desde https://localhost:5173.
+Ahora, es posible visitar la página desde http://localhost:5173/.
 
-### Backend
+### Backend (Opcional)
 
-Para ejecutar el backend:
+Para entrar en el contenedor del backend:
 
 ```sh
 docker compose exec app bash
 ```
 
-Una vez hecho esto, es posible utilizar las funciones de backend como el sistema de reservas.
+Desde aquí, se pueden ejecutar comandos de Artisan, migraciones, etc.
 
-## Database
+## 📁 Database
 
 Para entrar en la base de datos y poder consultarla:
 
 ```sh
-docker compose exec db psql -U postgres -d "tatuadora-db"
+docker compose exec db psql -U postgres -d "tatuadora_db"
 ```
 
-Una vez logueado en la base de datos, se pueden ejecutar consultas como:
+📂📆 Una vez dentro en la base de datos, se pueden ejecutar consultas como:
 
 ```sql
 select * from citas;
 select * from clientes;
 ```
 
-#### Anexo: Simulación de envío de emails
+📫✉️ #### Anexo: Simulación de envío de emails
 
 Para verificar que la simulación del envio de email funciona correctamente, se puede entrar en el contenedor del backend y ejecutar el siguiente comando:
+
+
 
 ```sh
 docker compose exec app tail -f storage/logs/laravel.log 
 ```
 
-Esto mostratrá los logs del backend, incluyendo los envíos de email simulados y el link de confirmación de la cita.
+📓 Esto mostratrá los logs del backend, incluyendo los envíos de email simulados y el link de confirmación de la cita. ✔️
 
 ## 🛠️ Tecnologías utilizadas
 
-Frontend: Vue 3 + Vite
+Frontend: Vue 3 + Vite + Bootstrap 5
 
 Estilos: CSS con diseño responsive y parallax
 
