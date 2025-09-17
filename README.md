@@ -106,9 +106,9 @@ docker compose up -d
 
 Una vez los contenedores están activos, podemos ejecutar los servicios.
 
-### 🎨 Frontend
+### Frontend (opcional)
 
-Para ejecutar el frontend:
+Para entrar en el contenedor del frontend:
 
 ```sh
 docker compose exec vue bash
@@ -126,7 +126,7 @@ docker compose exec app bash
 
 Desde aquí, se pueden ejecutar comandos de Artisan, migraciones, etc.
 
-## 📁 Database
+## 📁 DATABASE
 
 Para entrar en la base de datos y poder consultarla:
 
@@ -134,18 +134,16 @@ Para entrar en la base de datos y poder consultarla:
 docker compose exec db psql -U postgres -d "tatuadora_db"
 ```
 
-📂📆 Una vez dentro en la base de datos, se pueden ejecutar consultas como:
+📂📆 Una vez dentro en la base de datos, se pueden ejecutar CONSULTAS como:
 
 ```sql
 select * from citas;
 select * from clientes;
 ```
 
-📫✉️ #### Anexo: Simulación de envío de emails
+#### 📫✉️ Simulación de envío de emails
 
 Para verificar que la simulación del envio de email funciona correctamente, se puede entrar en el contenedor del backend y ejecutar el siguiente comando:
-
-
 
 ```sh
 docker compose exec app tail -f storage/logs/laravel.log 
