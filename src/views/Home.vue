@@ -7,6 +7,7 @@ import Carrusel from '../components/CarruselSection.vue'
 import FooterSection from '../components/FooterSection.vue'
 import FAQSection from '../components/FAQSection.vue' 
 import { ref } from 'vue'
+
 const menuOpen = ref(false)
 function toggleMenu() {
   menuOpen.value = !menuOpen.value
@@ -27,7 +28,7 @@ function toggleMenu() {
         </router-link>
 
         <!-- Botón hamburguesa solo visible en móvil/tablet -->
-        <button class="hamburger" @click="toggleMenu" aria-label="Abrir menú" aria-expanded="menuOpen">
+        <button class="hamburger" @click="toggleMenu" aria-label="Abrir menú" :aria-expanded="menuOpen">
           <span :class="{ open: menuOpen }"></span>
           <span :class="{ open: menuOpen }"></span>
           <span :class="{ open: menuOpen }"></span>
@@ -57,10 +58,16 @@ function toggleMenu() {
 
     <!-- Hero con video -->
     <header id="Home" class="hero-container" role="banner">
-      <video autoplay muted loop class="hero-video" aria-label="Una explosión de tinta lila y purpurina sobre el título del estudio de tatuajes llamado Witch Tattoo Studio">
-        <source src="/1.mp4" type="video/mp4" />
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        class="hero-video" 
+        aria-label="Una calavera en llamas con fuego animado sobre el título del estudio de tatuajes Witch Tattoo Studio">
+        <source src="/calavera.webm" type="video/webm" />
+        Tu navegador no soporta el video.
       </video>
-
       <div class="overlay">
         <Header />
       </div>
@@ -94,7 +101,7 @@ function toggleMenu() {
   </div>
 </template>
 
-<style>
+<style scoped>
 html {
   scroll-behavior: smooth;
 }
@@ -175,8 +182,6 @@ html {
   position: relative;
 }
 
-/*Solo iconos del menú fijo en blanco*/
-
 .main-nav .social-icon img {
   filter: brightness(0) invert(1);
   transition: filter 0.3s ease;
@@ -186,7 +191,6 @@ html {
   filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,0.8));
 }
 
-/* Círculo rojo al pasar el ratón */
 .social-icon::before {
   content: '';
   position: absolute;
@@ -252,12 +256,10 @@ html {
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -309,79 +311,17 @@ html {
     justify-content: space-between;
     align-items: center;
   }
-
   .logo-link {
     flex: 1 1 auto;
   }
-
   .hamburger {
     order: 2;
   }
-
   .reserva-btn-menu {
     order: 3;
-    flex: 1 1 100%; /* ocupa fila entera */
+    flex: 1 1 100%;
     text-align: center;
     margin-top: 0.5rem;
-  }
-}
-
-/* =======================
-   Responsive HERO/HEADER
-======================= */
-.header-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;   /* ocupa toda la pantalla */
-  text-align: center;
-  padding: 2rem;
-  overflow: hidden;
-}
-
-.header-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* que no se deforme */
-  z-index: -1;         /* detrás del texto */
-}
-
-/* Títulos y texto encima del vídeo */
-.header-title {
-  font-size: clamp(2rem, 8vw, 5rem);
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-  margin-bottom: 1rem;
-}
-
-.header-text {
-  font-size: clamp(1rem, 4vw, 2rem);
-  color: #eee;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Ajustes extra en pantallas pequeñas */
-@media (max-width: 700px) {
-  .header-title {
-    letter-spacing: 2px;
-  }
-  .header-container {
-    padding: 1rem 0.5rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .header-container {
-    padding: 0.5rem 0.2rem;
   }
 }
 
@@ -407,11 +347,8 @@ html {
 .hamburger span.open:nth-child(2) { opacity: 0; }
 .hamburger span.open:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-/* Responsive: mostrar hamburguesa y menú desplegable en móvil/tablet */
 @media (max-width: 900px) {
-  .hamburger {
-    display: flex;
-  }
+  .hamburger { display: flex; }
   .nav-links {
     position: absolute;
     top: 60px;
@@ -427,11 +364,8 @@ html {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border-radius: 0 0 18px 18px;
   }
-  .nav-links.open {
-    display: flex;
-  }
-  .nav-links a,
-  .nav-links .router-link-active {
+  .nav-links.open { display: flex; }
+  .nav-links a, .nav-links .router-link-active {
     color: #2E1A47 !important;
     font-size: 1.15rem;
     font-weight: 600;
@@ -454,14 +388,6 @@ html {
     box-shadow: 0 0 10px rgba(218, 192, 245, 0.3);
     letter-spacing: 1px;
   }
-  @media (max-width: 900px) {
-  .reserva-btn-menu {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
-    width: auto;         /* se ajusta al contenido */
-    text-align: center;
-  }
-}
 }
 
 /* En escritorio, menú horizontal normal */
