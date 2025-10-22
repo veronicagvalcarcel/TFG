@@ -200,6 +200,13 @@ html {
   overflow: hidden;
 }
 
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .hero-video {
   position: absolute;
   top: 50%;
@@ -236,7 +243,7 @@ html {
 
 .section-bg {
   position: relative;
-  z-index: 2;
+  z-index: auto;
 }
 
 .smoke3 {

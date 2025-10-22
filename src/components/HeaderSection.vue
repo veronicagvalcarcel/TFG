@@ -20,10 +20,10 @@
           </a>
         </div>
 
-        <!-- Botón reservas -->
-        <router-link to="/reservas" class="reserva-btn-menu" role="button" @click="closeMenu">
+        <!-- Botón reservas -> apunta a WhatsApp -->
+        <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="reserva-btn-menu">
           ¡Quiero tatuarme!
-        </router-link>
+        </a>
 
         <!-- Menú hamburguesa -->
         <button
@@ -62,15 +62,17 @@ export default {
 </script>
 
 <style scoped>
+/* =====================
+   Layout original
+===================== */
 .main-nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(8px);
 }
-
 .nav-container {
   width: 90%;
   max-width: 1200px;
@@ -79,17 +81,6 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
-/* LOGO */
-.logo-link {
-  font-family: 'Pirata', cursive;
-  color: #fff;
-  font-size: 2rem;
-  text-decoration: none;
-}
-.logo-link:hover { color: #ff0000; }
-
-/* FILAS */
 .nav-top {
   display: flex;
   justify-content: center;
@@ -102,35 +93,117 @@ export default {
   flex-wrap: wrap;
   margin-top: 0.4rem;
 }
-
-/* REDES */
-.social-icons {
-  display: flex;
-  gap: 1rem;
-}
-.social-icon img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-}
-.social-icon img:hover {
-  filter: brightness(0) invert(0.6) sepia(1) hue-rotate(-20deg);
-}
-
-/* BOTÓN */
-.reserva-btn-menu {
-  background-color: #ff0000;
+.logo-link {
+  font-family: 'Pirata', cursive;
   color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-weight: bold;
+  font-size: 2rem;
   text-decoration: none;
 }
+.logo-link:hover { color: #ff0000; }
+
+/* =====================
+   Botón estilo ReservasSection
+===================== */
+.reserva-btn-menu {
+  position: relative;
+  overflow: hidden; /* evita que el brillo se salga */
+  display: inline-block;
+  color: #F5F5F5;
+  background: linear-gradient(45deg, #FF2E2E, #6A4A8A);
+  border-radius: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 15px rgba(255,46,46,0.6);
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.reserva-btn-menu::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
 .reserva-btn-menu:hover {
-  background-color: #cc0000;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,46,46,0.8);
+}
+.reserva-btn-menu:hover::before {
+  top: -10%;
+  left: -10%;
 }
 
-/* HAMBURGUESA */
+/* =====================
+   Iconos sociales estilo footer
+===================== */
+/* =====================
+   Iconos sociales estilo footer
+===================== */
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.social-icon {
+  display: inline-flex;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: brightness(0) invert(1); /* icono normal */
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,46,46,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon:hover::before {
+  width: 60px;
+  height: 60px;
+}
+
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon:hover img {
+  filter: brightness(2) invert(1) drop-shadow(0 0 8px #fff);
+}
+
+/* =====================
+   Menú hamburguesa y links
+===================== */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -150,8 +223,6 @@ export default {
 .hamburger span.open:nth-child(1) { transform: rotate(45deg) translateY(8px); }
 .hamburger span.open:nth-child(2) { opacity: 0; }
 .hamburger span.open:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
-
-/* MENÚ DESPLEGABLE */
 .nav-links {
   position: absolute;
   top: 100%;
@@ -166,9 +237,7 @@ export default {
   transform: translateY(-200%);
   transition: transform 0.3s ease;
 }
-.nav-links.open {
-  transform: translateY(0);
-}
+.nav-links.open { transform: translateY(0); }
 .nav-links a {
   color: #fff;
   text-decoration: none;
@@ -176,40 +245,15 @@ export default {
 }
 .nav-links a:hover { color: #ff0000; }
 
-/* === ESCRITORIO === */
+/* =====================
+   Escritorio
+===================== */
 @media (min-width: 769px) {
-  .nav-container { 
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: space-between; 
-  }
-
-  .nav-top, .nav-bottom { 
-    flex-direction: row; 
-    align-items: center; 
-    margin-top: 0; 
-  }
-
-  /* 🔹 Aquí añadimos separación entre iconos y botón */
-  .nav-bottom { 
-    gap: 2rem; /* separa todos los elementos de nav-bottom */
-  }
-
-  /* 🔹 Botón con margen extra respecto a los iconos sociales */
-  .reserva-btn-menu {
-    margin-left: 1.5rem;
-  }
-
+  .nav-container { flex-direction: row; align-items: center; justify-content: space-between; }
+  .nav-top, .nav-bottom { flex-direction: row; align-items: center; margin-top: 0; }
+  .nav-bottom { gap: 2rem; }
   .hamburger { display: none; }
-
-  .nav-links {
-    position: static;
-    transform: none;
-    background: transparent;
-    flex-direction: row;
-    gap: 2rem;
-    padding: 0;
-  }
+  .nav-links { position: static; transform: none; background: transparent; flex-direction: row; gap: 2rem; padding: 0; }
+  .reserva-btn-menu { margin-left: 1.5rem; font-size: 1.1rem; padding: 0.6rem 1.8rem; }
 }
-
 </style>

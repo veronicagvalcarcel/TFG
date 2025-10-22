@@ -95,6 +95,34 @@
 .footer-links a:hover { color: #FF2E2E; }
 
 /* ================= REDES ================= */
+/* ================= REDES ================= */
+.footer-social {
+  display: flex;
+  gap: 1.5rem; /* espacio entre iconos */
+}
+
+.social-icon {
+  display: inline-flex;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: brightness(0) invert(0); /* icono negro normal */
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* círculo rojo detrás */
+/* ================= REDES ================= */
 .footer-social {
   display: flex;
   gap: 1rem;
@@ -114,6 +142,8 @@
   display: block;
   z-index: 2;
   position: relative;
+  filter: none; /* icono negro normal */
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 .social-icon::before {
   content: '';
@@ -122,7 +152,7 @@
   left: 50%;
   width: 0;
   height: 0;
-  background: rgba(255,46,46,0.3);
+  background: rgba(255,46,46,0.3); /* círculo rojo */
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.3s ease, height 0.3s ease;
@@ -132,7 +162,15 @@
   width: 60px;
   height: 60px;
 }
-.social-icon:hover { transform: scale(1.1); }
+.social-icon:hover {
+  transform: scale(1.1);
+}
+.social-icon:hover img {
+  /* Brillo blanco sobre el icono negro */
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 8px #fff);
+}
+
+
 
 /* =======================
    Responsive móvil

@@ -2,7 +2,7 @@
   <div class="reservas-section">
     <h2 class="cta-title">¿Te animas a inmortalizar tu idea?</h2>
     <p class="cta-text">Haz clic y convierte tu idea en tinta.</p>
-    <a href="/reservas" target="_blank" rel="noopener noreferrer" class="reserva-btn">
+    <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="reserva-btn">
       ¡Quiero tatuarme!
     </a>
   </div>
@@ -17,20 +17,20 @@ export default {}
   text-align: center;
   padding: 3rem 1rem;
   background: transparent;
-  font-family: sans-serif;
+  font-family: 'Pirata', cursive; /* misma tipografía que el header */
   position: relative;
   z-index: 2;
 }
 
 /* Call to action principal */
 .cta-title {
-  font-size: clamp(2.5rem, 6vw, 4rem); /* tamaño grande y responsive */
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: bold;
   color: #FF2E2E;
   display: inline-block;
   animation: pulse 1.5s infinite ease-in-out;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5); /* sombra para destacar */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 /* Animación de pulso */
@@ -43,17 +43,21 @@ export default {}
 /* Párrafo debajo */
 .cta-text {
   color: #F5F5F5;
-  font-size: 1.4rem; /* más grande */
+  font-family: 'Pirata', cursive; /* misma tipografía que el header */
+  font-weight: bold;
+  font-size: clamp(1.6rem, 3vw, 2rem);
   margin-bottom: 2rem;
+  text-shadow: 0 0 4px rgba(255,255,255,0.6); /* efecto sutil de brillo */
 }
 
-/* Botón */
+/* Botón estilo ReservasSection */
 .reserva-btn {
   display: inline-block;
   margin-top: 2rem;
   padding: 1rem 2.5rem;
   font-size: 1.3rem;
   font-weight: bold;
+  font-family: 'Pirata', cursive; /* misma tipografía que header */
   color: #F5F5F5;
   background: linear-gradient(45deg, #FF2E2E, #6A4A8A);
   border-radius: 12px;

@@ -42,7 +42,6 @@
   background: transparent;
   flex-wrap: wrap;
   position: relative;
-  z-index: 2;
 }
 
 .about-img {
@@ -63,7 +62,7 @@
   top: 0;
   left: 0;
   transform: scale(1.15); /* zoom para eliminar márgenes negros */
-  z-index: 1;
+  z-index: 0;
 }
 
 .about-content {
@@ -71,6 +70,7 @@
   color: #F5F5F5;
   z-index: 3;
 }
+
 
 /* Botones de ubicación */
 .location-btn {

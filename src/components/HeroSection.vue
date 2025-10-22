@@ -36,8 +36,7 @@ export default {}
 .header-wrapper {
   position: relative;
   width: 100%;
-  height: calc(100vh - 80px); /* restamos la altura del header fijo */
-  margin-top: 80px; /* evita que el header se superponga */
+  height: 100vh; /* ocupar todo el viewport */
 }
 
 
@@ -162,5 +161,13 @@ export default {}
 @media (max-width: 500px) {
   .header-title { font-size: clamp(4rem, 18vw, 10rem); }
   .header-text { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+  
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* ocupa toda la pantalla */
+    overflow: hidden;
+  }
 }
+
 </style>
