@@ -144,9 +144,6 @@ export default {
 /* =====================
    Iconos sociales estilo footer
 ===================== */
-/* =====================
-   Iconos sociales estilo footer
-===================== */
 .social-icons {
   display: flex;
   gap: 1.5rem;
