@@ -1,5 +1,6 @@
 <script setup>
-import Header from '../components/HeaderSection.vue'
+import HeroSection from '../components/HeroSection.vue'
+import HeaderSection from '../components/HeaderSection.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
 import ReservasForm from '../components/ReservasSection.vue'
@@ -7,6 +8,7 @@ import Carrusel from '../components/CarruselSection.vue'
 import FooterSection from '../components/FooterSection.vue'
 import FAQSection from '../components/FAQSection.vue' 
 import { ref } from 'vue'
+
 
 const menuOpen = ref(false)
 function toggleMenu() {
@@ -18,63 +20,16 @@ function toggleMenu() {
   <div class="bg-container">
     <!-- Capas de humo (decorativa) -->
     <div class="smoke smoke3" aria-hidden="true"></div>
-
-    <!-- Menú fijo -->
-    <nav class="main-nav" role="navigation" aria-label="Menú principal">
-      <div class="nav-container">
-        <!-- Logo -->
-        <router-link :to="{ path: '/', hash: '#Home' }" class="logo-link">
-          Witch Tattoo Studio
-        </router-link>
-
-        <!-- Botón hamburguesa solo visible en móvil/tablet -->
-        <button class="hamburger" @click="toggleMenu" aria-label="Abrir menú" :aria-expanded="menuOpen">
-          <span :class="{ open: menuOpen }"></span>
-          <span :class="{ open: menuOpen }"></span>
-          <span :class="{ open: menuOpen }"></span>
-        </button>
-
-        <!-- Enlaces del menú hamburguesa -->
-        <div class="nav-links" :class="{ open: menuOpen }">
-          <router-link :to="{ path: '/', hash: '#Carrusel' }" @click="menuOpen = false">Galería</router-link>
-          <router-link :to="{ path: '/', hash: '#ServicesSection' }" @click="menuOpen = false">Servicios</router-link>
-          <router-link :to="{ path: '/', hash: '#FAQ' }" @click="menuOpen = false">FAQ</router-link>
-        </div>
-
-        <!-- Iconos sociales -->
-        <div class="social-icons">
-          <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="/Logos/instagram.svg" alt="Instagram">
-          </a>
-          <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="/Logos/whatsapp.svg" alt="WhatsApp">
-          </a>
-        </div>
-
-        <!-- Botón de reservas -->
-        <router-link to="/reservas" class="reserva-btn-menu" role="button">¡Quiero tatuarme!</router-link>
-      </div>
-    </nav>
-
-    <!-- Hero con video -->
-    <header id="Home" class="hero-container" role="banner">
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        class="hero-video" 
-        aria-label="Una calavera en llamas con fuego animado sobre el título del estudio de tatuajes Witch Tattoo Studio">
-        <source src="/calavera.webm" type="video/webm" />
-        Tu navegador no soporta el video.
-      </video>
-      <div class="overlay">
-        <Header />
-      </div>
-    </header>
-
     <!-- Secciones principales -->
-    <main role="main">
+    <div id="Home">
+      <!-- Header fijo y reutilizable -->
+      <HeaderSection />
+
+      <!-- Hero exclusivo de la página principal -->
+      <HeroSection />
+
+      <!-- Contenido principal -->
+      <main role="main">
       <section id="AboutSection" class="section-bg">
         <AboutSection />
       </section>
@@ -97,9 +52,11 @@ function toggleMenu() {
     </main>
 
     <!-- Footer -->
-    <FooterSection role="contentinfo" />
+    <FooterSection />
+    </div>
   </div>
 </template>
+
 
 <style scoped>
 html {

@@ -1,165 +1,215 @@
 <template>
-  <header class="header-wrapper">
-    <!-- Video de fondo -->
-    <video class="header-video" autoplay muted loop playsinline>
-      <source src="/calavera.webm" type="video/webm" />
-      Tu navegador no soporta el video.
-    </video>
+  <nav class="main-nav" role="navigation" aria-label="Menú principal">
+    <div class="nav-container">
+      <!-- Fila superior -->
+      <div class="nav-top">
+        <router-link :to="{ path: '/', hash: '#Home' }" class="logo-link">
+          Witch Tattoo Studio
+        </router-link>
+      </div>
 
-    <!-- Contenedor principal -->
-    <div class="header-container">
-      <!-- Título principal -->
-      <h1 class="header-title">Witch Tattoo Studio</h1>
+      <!-- Fila inferior -->
+      <div class="nav-bottom">
+        <!-- Redes sociales -->
+        <div class="social-icons">
+          <a href="https://www.instagram.com/witch_tatto/" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <img src="/Logos/instagram.svg" alt="Instagram" />
+          </a>
+          <a href="https://wa.me/34633852858" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <img src="/Logos/whatsapp.svg" alt="WhatsApp" />
+          </a>
+        </div>
 
-      <!-- Texto hero en dos frases -->
-      <p class="header-text first-line">Explora todos los diseños, inspírate,</p>
-      <p class="header-text second-line">conecta con tu estilo y agenda tu próxima cita.</p>
+        <!-- Botón reservas -->
+        <router-link to="/reservas" class="reserva-btn-menu" role="button" @click="closeMenu">
+          ¡Quiero tatuarme!
+        </router-link>
+
+        <!-- Menú hamburguesa -->
+        <button
+          class="hamburger"
+          @click="toggleMenu"
+          aria-label="Abrir menú"
+          :aria-expanded="menuOpen.toString()"
+        >
+          <span :class="{ open: menuOpen }"></span>
+          <span :class="{ open: menuOpen }"></span>
+          <span :class="{ open: menuOpen }"></span>
+        </button>
+      </div>
+
+      <!-- Enlaces del menú -->
+      <div class="nav-links" :class="{ open: menuOpen }">
+        <router-link :to="{ path: '/', hash: '#Carrusel' }" @click="closeMenu">Galería</router-link>
+        <router-link :to="{ path: '/', hash: '#ServicesSection' }" @click="closeMenu">Servicios</router-link>
+        <router-link :to="{ path: '/', hash: '#FAQ' }" @click="closeMenu">FAQ</router-link>
+      </div>
     </div>
-  </header>
+  </nav>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'HeaderSection',
+  data() {
+    return { menuOpen: false };
+  },
+  methods: {
+    toggleMenu() { this.menuOpen = !this.menuOpen },
+    closeMenu() { this.menuOpen = false }
+  }
+};
 </script>
 
 <style scoped>
-/* Fuentes */
-@font-face {
-  font-family: 'Pirata';
-  src: url('/Fonts/Pirata/Pirata-Regular.woff2') format('woff2'),
-       url('/Fonts/Pirata/Pirata-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Wrapper del header */
-.header-wrapper {
-  position: relative;
+.main-nav {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
 }
 
-/* Video de fondo */
-.header-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 0;
-  display: block;
-}
-
-/* Contenedor principal */
-.header-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.8rem 0;
   display: flex;
   flex-direction: column;
+}
+
+/* LOGO */
+.logo-link {
+  font-family: 'Pirata', cursive;
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.logo-link:hover { color: #ff0000; }
+
+/* FILAS */
+.nav-top {
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 2rem;
-  box-sizing: border-box;
-  z-index: 1;
+}
+.nav-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
 }
 
-/* Título principal */
-.header-title {
-  font-family: 'Fleur De Leah', cursive;
-  font-size: clamp(6rem, 15vw, 14rem);
+/* REDES */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+.social-icon img:hover {
+  filter: brightness(0) invert(0.6) sepia(1) hue-rotate(-20deg);
+}
+
+/* BOTÓN */
+.reserva-btn-menu {
+  background-color: #ff0000;
   color: #fff;
-  margin-bottom: 1rem;
-  animation: fadeSlideIn 2s ease forwards, float 3s ease-in-out infinite;
-  text-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000, 0 0 24px #ff4d4d;
-  position: relative;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.reserva-btn-menu:hover {
+  background-color: #cc0000;
 }
 
-/* Sparkles sobre título */
-.header-title::before,
-.header-title::after {
-  content: '';
+/* HAMBURGUESA */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger span.open:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+.hamburger span.open:nth-child(2) { opacity: 0; }
+.hamburger span.open:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+
+/* MENÚ DESPLEGABLE */
+.nav-links {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle, #fff 0%, transparent 70%);
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-  animation: sparkle 3s infinite ease-in-out;
-  z-index: 2;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1.2rem;
+  transform: translateY(-200%);
+  transition: transform 0.3s ease;
 }
-.header-title::before { top: 10%; left: 20%; animation-delay: 0s; }
-.header-title::after { top: 30%; right: 15%; animation-delay: 1.5s; }
-
-/* Texto hero */
-.header-text {
-  font-family: 'Pirata', cursive;
-  font-size: clamp(2rem, 4vw, 4rem);
+.nav-links.open {
+  transform: translateY(0);
+}
+.nav-links a {
   color: #fff;
-  margin: 0.5rem 0;
-  text-shadow: 
-    -3px -3px 0 #000, 3px -3px 0 #000,
-    -3px 3px 0 #000, 3px 3px 0 #000;
-  opacity: 0;
-  position: relative;
-  animation-fill-mode: forwards;
-  animation-name: fadeSlideIn, floatText;
-  animation-duration: 2s, 3s;
-  animation-timing-function: ease, ease-in-out;
-  animation-iteration-count: 1, infinite;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.nav-links a:hover { color: #ff0000; }
+
+/* === ESCRITORIO === */
+@media (min-width: 769px) {
+  .nav-container { 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between; 
+  }
+
+  .nav-top, .nav-bottom { 
+    flex-direction: row; 
+    align-items: center; 
+    margin-top: 0; 
+  }
+
+  /* 🔹 Aquí añadimos separación entre iconos y botón */
+  .nav-bottom { 
+    gap: 2rem; /* separa todos los elementos de nav-bottom */
+  }
+
+  /* 🔹 Botón con margen extra respecto a los iconos sociales */
+  .reserva-btn-menu {
+    margin-left: 1.5rem;
+  }
+
+  .hamburger { display: none; }
+
+  .nav-links {
+    position: static;
+    transform: none;
+    background: transparent;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 0;
+  }
 }
 
-/* Sparkles para texto hero */
-.header-text::before,
-.header-text::after {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: radial-gradient(circle, #fff 0%, transparent 70%);
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-  animation: sparkle 2.5s infinite ease-in-out;
-  z-index: 2;
-}
-.first-line::before { top: 20%; left: 15%; animation-delay: 0s; }
-.first-line::after  { bottom: 15%; right: 10%; animation-delay: 1s; }
-.second-line::before { top: 25%; left: 10%; animation-delay: 2s; }
-.second-line::after  { bottom: 10%; right: 20%; animation-delay: 3s; }
-
-/* Animación por línea */
-.first-line { animation-delay: 0s, 0s; }
-.second-line { animation-delay: 2s, 0s; }
-
-/* Animaciones */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-@keyframes floatText {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-@keyframes fadeSlideIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1); }
-}
-
-/* Responsividad para móviles */
-@media (max-width: 500px) {
-  .header-title { font-size: clamp(4rem, 18vw, 10rem); }
-  .header-text { font-size: clamp(1.5rem, 5vw, 2.5rem); }
-}
 </style>
