@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Fleur De Leah';
+    src: local('Fleur De Leah Regular'), local('FleurDeLeah-Regular'),
+        url('hinted-subset-FleurDeLeah-Regular.woff2') format('woff2'),
+        url('hinted-subset-FleurDeLeah-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
