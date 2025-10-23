@@ -1,43 +1,46 @@
-# 💉 Witch Tattoo - Web SPA
 
-**Proyecto de sitio web para estudio de tatuajes** desarrollado como Single Page Application (SPA) con Vue.js y Vite.
+💉 Witch Tattoo - Web SPA
 
-## 🌐 Características principales
+Sitio web para estudio de tatuajes, desarrollado como Single Page Application (SPA) con Vue 3 y Vite.
+El objetivo es ofrecer una experiencia visual fluida, moderna y funcional, con navegación por secciones dentro de una sola página.
 
-- Diseño responsive y visualmente atractivo.
-- Efecto de parallax con video de fondo en el header.
-- Navegación por secciones (`Inicio`, `Carrusel`, `Servicios`, `Reservas`, `FAQ`) mediante anclas internas.
-- Scroll suave y experiencia fluida en dispositivos móviles.
-- Integración de componentes reutilizables (`Header`, `Footer`, `ReservasForm`, etc.).
-- Estructura clara y mantenible del código frontend.
-- Preparado para conectar con backend Laravel (estructura incluida en el repositorio).
+🌐 Características principales
 
-## 🧱 Estructura del proyecto
+🌈 Diseño responsive y visualmente atractivo.
 
-```
-🧱 Frontend (Vue.js) estructura de carpetas:
+🎥 Efecto parallax con video de fondo en el header.
 
-src/
+🔗 Navegación fluida entre secciones (Inicio, Carrusel, Servicios, Reservas, FAQ) mediante anclas internas.
+
+🧭 Scroll suave y comportamiento SPA (sin recarga de página).
+
+🧩 Componentes reutilizables: Header, HeroSection, ReservasSection, Footer, etc.
+
+⚙️ Código modular y mantenible, organizado por secciones.
+
+💡 Preparada para una futura integración con backend (Laravel u otro framework si se desea).
+
+🧱 Estructura del proyecto
+
 tatuadora-web/
-├── public/                   # Archivos estáticos (imágenes, vídeos, favicon, fonts)
+├── public/                     # Archivos estáticos (imágenes, vídeos, fuentes, favicon)
 ├── src/
-│   ├── assets/               # Archivos estáticos usados en el frontend (CSS)
-│   │   └── main.css          # Estilos globales
-│   ├── api/                  # Configuración de Axios y llamadas a APIs
-│   │   └── axios.js
-│   ├── components/       # Componentes reutilizables (secciones y bloques UI)
+│   ├── api/                    # Configuración de Axios u otras conexiones externas (vacío o futuro uso)
+│   ├── assets/                 # Recursos estáticos usados en el frontend
+│   │   ├── main.css            # Estilos globales
+│   │   └── vue.svg
+│   ├── components/             # Componentes reutilizables (bloques o secciones)
 │   │   ├── AboutSection.vue
 │   │   ├── CarruselSection.vue
 │   │   ├── FAQSection.vue
 │   │   ├── FooterSection.vue
 │   │   ├── HeaderSection.vue
+│   │   ├── HeroSection.vue
 │   │   ├── ReservasSection.vue
 │   │   └── ServicesSection.vue
-│   ├── router/               # Configuración de rutas (Vue Router)
+│   ├── router/                 # Configuración de rutas internas (páginas legales y SPA)
 │   │   └── router.js
-│   ├── services/             # Servicios para lógica de negocio o llamadas a API
-│   │   └── citaService.js
-│   ├── views/                # Vistas principales (páginas del sitio)
+│   ├── views/                  # Vistas principales del sitio
 │   │   ├── About.vue
 │   │   ├── Aviso_legal.vue
 │   │   ├── Carrusel.vue
@@ -47,121 +50,83 @@ tatuadora-web/
 │   │   ├── Proteccion_datos.vue
 │   │   ├── Reservas.vue
 │   │   └── Services.vue
-│   ├── App.vue               # Componente raíz de la aplicación
-│   └── main.js               # Punto de entrada de la app Vue
-├── index.html                # HTML principal
-├── package.json              # Dependencias y scripts del proyecto
-└── vite.config.js            # Configuración de Vite
+│   ├── App.vue                 # Componente raíz
+│   └── main.js                 # Punto de entrada de la app Vue
+├── index.html                  # HTML principal
+├── package.json                # Dependencias y scripts
+├── package-lock.json           # Bloqueo de versiones
+└── vite.config.js              # Configuración de Vite
 
-🧱 Backend (Laravel) estructura principal:
+🚀 Cómo ejecutar el proyecto localmente
 
-src/
-tatuadora-backend/
-├── app/
-│   ├── Http/
-│   │   └── Controllers/      # Controladores de la lógica (CitaController, etc.)
-│   ├── Mail/             # Clases para envío de correos (MailAvisoCita, MailConfirmaCita)
-│   ├── Models/               # Modelos Eloquent (Cliente, Cita, Usuario)
-│   └── Providers/            # Proveedores de servicios
-├── bootstrap/                # Archivos de arranque de Laravel
-├── config/                   # Configuración de la app (base de datos, mail, etc.)
-├── database/
-│   ├── factories/            # Fábricas para tests/seeds
-│   ├── migrations/           # Migraciones de base de datos
-│   └── seeders/              # Seeders para poblar la base de datos
-├── public/                   # Punto de entrada web (index.php)
-├── resources/
-│   ├── css/                  # CSS 
-│   ├── js/                   # JS (bootstrap.js, etc.)
-│   └── views/                # Vistas Blade (emails, welcome.blade.php, etc.)
-├── routes/                   # Definición de rutas (web.php, api.php)
-├── storage/                  # Archivos generados (logs, caché, etc.)
-├── tests/                    # Tests automáticos
-├── vendor/                   # Dependencias Composer
-├── .env                      # Configuración de entorno
-├── artisan                   # CLI de Laravel
-├── composer.json             # Dependencias PHP
-├── package.json              # Dependencias JS (si usas Laravel Mix/Vite)
-└── README.md                 # Documentación del proyecto
+Asegúrate de tener instalados:
+Node.js
+ (versión 18 o superior)
+npm
+ o pnpm
 
-```
+🔧 Instalación
+1. Clona el repositorio
 
-
-
-## 🚀 Cómo ejecutar el proyecto
-
-1. Clona el repositorio:
-2. Instala las dependencias:
 ```bash
 git clone https://github.com/tu-usuario/tatuadora-web.git
 cd tatuadora-web
 ```
-## 🐳 DOCKER 
 
-El proyecto se puede ejecutar utilizando Docker. Primero, levantamos todos los contenedores en modo daemon para no ocupar la sesión de terminal:
+2. Instala las dependencias
+```bash
+npm install
+```
+3. Ejecuta el servidor de desarrollo
+```bash
+npm run dev
+```
+4. Abre tu navegador y visita [`http://localhost:5173`](http://localhost:5173)
 
-```sh
+
+🐳 Docker
+
+Para ejecutarlo dentro de un contenedor Docker:
+
+Levanta el entorno:
+```bash
 docker compose up -d
 ```
 
-Una vez los contenedores están activos, podemos ejecutar los servicios.
+Accede a la app desde tu navegador en:
 
-### Frontend (opcional)
+[`http://localhost:5173`](http://localhost:5173)
 
-Para entrar en el contenedor del frontend:
+Para detener los contenedores:
 
-```sh
-docker compose exec vue bash
+```bash
+docker compose down
 ```
 
-Ahora, es posible visitar la página desde http://localhost:5173/.
+🛠️ Tecnologías utilizadas
+Tipo	Herramienta
+Framework principal	Vue 3
+Compilador / servidor local	Vite
+Estilos	CSS3 (estructura modular y responsive)
+Animaciones	Parallax y scroll suave con CSS y Vue
+Gestión de rutas	Vue Router
+Gestión de dependencias	npm
+Contenedores (opcional)	Docker Compose
 
-### Backend (Opcional)
+📁 Navegación y secciones
 
-Para entrar en el contenedor del backend:
+Inicio: Presentación con video de fondo y efecto parallax.
 
-```sh
-docker compose exec app bash
-```
+Carrusel: Galería visual o muestra de trabajos.
 
-Desde aquí, se pueden ejecutar comandos de Artisan, migraciones, etc.
+Servicios: Lista de servicios del estudio.
 
-## 📁 DATABASE
+Reservas: Formulario informativo sin conexión a base de datos.
 
-Para entrar en la base de datos y poder consultarla:
+FAQ: Preguntas frecuentes con diseño tipo acordeón.
 
-```sh
-docker compose exec db psql -U postgres -d "tatuadora_db"
-```
+Páginas legales: Aviso Legal, Política de Privacidad y Protección de Datos.
 
-📂📆 Una vez dentro en la base de datos, se pueden ejecutar CONSULTAS como:
-
-```sql
-select * from citas;
-select * from clientes;
-```
-
-#### 📫✉️ Simulación de envío de emails
-
-Para verificar que la simulación del envio de email funciona correctamente, se puede entrar en el contenedor del backend y ejecutar el siguiente comando:
-
-```sh
-docker compose exec app tail -f storage/logs/laravel.log 
-```
-
-📓 Esto mostratrá los logs del backend, incluyendo los envíos de email simulados y el link de confirmación de la cita. ✔️
-
-## 🛠️ Tecnologías utilizadas
-
-Frontend: Vue 3 + Vite + Bootstrap 5
-
-Estilos: CSS con diseño responsive y parallax
-
-Routing interno: Scroll suave con navegación anclada
-
-Backend: Laravel
-
-Base de datos: PostgreSQL
 
 ## 📁 Ramas de desarrollo
 
