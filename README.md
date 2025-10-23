@@ -136,3 +136,10 @@ El proyecto se organiza mediante ramas específicas para cada funcionalidad o co
 
 ```bash
 git checkout feature/nombre-de-la-rama
+```
+
+### Crear una rama nueva
+
+```bash
+git checkout -b feature/nueva-rama
+``` 
