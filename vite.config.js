@@ -3,14 +3,12 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
+  base: process.env.NODE_ENV === 'production' ? '/witch-tattoo-studio/' : '/',
   server: {
-    port: 5173,             // puerto donde correrá dev server de Vue
-    proxy: {
-      '/api': 'http://localhost:8000',  // redirige llamadas a la API de Laravel
-    },
+    port: 5173,
   },
   build: {
-    outDir: 'dist',          // build Vue separado
+    outDir: 'dist',
     emptyOutDir: true,
   },
 });
