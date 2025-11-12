@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Vista principal con todas las secciones
 import Home from '../views/Home.vue'
@@ -14,7 +14,6 @@ const routes = [
     name: 'home',
     component: Home
   },
-  // Páginas legales
   {
     path: '/aviso_legal',
     name: 'aviso_legal',
@@ -33,7 +32,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(), // ⚠️ cambio aquí para GH Pages
   routes,
   scrollBehavior(to) {
     if (to.hash) {

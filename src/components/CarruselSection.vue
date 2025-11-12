@@ -40,63 +40,63 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 // Estilos de tatuajes
 const styles = [
-  'Realismo', 'Fine Line', 'Blackwork', 'Lettering',
-  'Cover Up', 'Polinesio', 'Geométrico', 'Color', 'Old School'
+  'Realismo', 'FineLine', 'Blackwork', 'Lettering',
+  'CoverUp', 'Polinesio', 'Geométrico', 'Color', 'OldSchool'
 ]
 
 const selectedStyle = ref(styles[0])
 const currentIndex = ref(0)
 const styleIndex = ref(0) // índice del estilo actual
 
-// Imágenes por estilo (todas como estaban)
+// Imágenes por estilo
 const images = [
-  { src: '/Carrusel/blackwork/1.webp', style: 'Blackwork' },
-  { src: '/Carrusel/blackwork/2.webp', style: 'Blackwork' },
-  { src: '/Carrusel/blackwork/3.webp', style: 'Blackwork' },
-  { src: '/Carrusel/blackwork/4.webp', style: 'Blackwork' },
-  { src: '/Carrusel/blackwork/5.webp', style: 'Blackwork' },
-  { src: '/Carrusel/blackwork/6.webp', style: 'Blackwork' },
-  { src: '/Carrusel/blackwork/7.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/1.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/2.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/3.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/4.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/5.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/6.webp', style: 'Blackwork' },
+  { src: './Carrusel/blackwork/7.webp', style: 'Blackwork' },
 
-  { src: '/Carrusel/color/1.webp', style: 'Color' },
-  { src: '/Carrusel/color/2.webp', style: 'Color' },
-  { src: '/Carrusel/color/5.webp', style: 'Color' },
-  { src: '/Carrusel/color/6.webp', style: 'Color' },
-  { src: '/Carrusel/color/7.webp', style: 'Color' },
-  { src: '/Carrusel/color/8.webp', style: 'Color' },
+  { src: './Carrusel/color/1.webp', style: 'Color' },
+  { src: './Carrusel/color/2.webp', style: 'Color' },
+  { src: './Carrusel/color/5.webp', style: 'Color' },
+  { src: './Carrusel/color/6.webp', style: 'Color' },
+  { src: './Carrusel/color/7.webp', style: 'Color' },
+  { src: './Carrusel/color/8.webp', style: 'Color' },
 
-  { src: '/Carrusel/fine line/1.webp', style: 'Fine Line' },
-  { src: '/Carrusel/fine line/2.webp', style: 'Fine Line' },
-  { src: '/Carrusel/fine line/3.webp', style: 'Fine Line' },
+  { src: './Carrusel/FineLine/1.webp', style: 'FineLine' },
+  { src: './Carrusel/FineLine/2.webp', style: 'FineLine' },
+  { src: './Carrusel/FineLine/3.webp', style: 'FineLine' },
 
-  { src: '/Carrusel/geometrico/1.webp', style: 'Geométrico' },
-  { src: '/Carrusel/geometrico/2.webp', style: 'Geométrico' },
-  { src: '/Carrusel/geometrico/3.webp', style: 'Geométrico' },
+  { src: './Carrusel/geometrico/1.webp', style: 'Geométrico' },
+  { src: './Carrusel/geometrico/2.webp', style: 'Geométrico' },
+  { src: './Carrusel/geometrico/3.webp', style: 'Geométrico' },
 
-  { src: '/Carrusel/Cover up/1.webp', style: 'Cover Up' },
-  { src: '/Carrusel/Cover up/2.webp', style: 'Cover Up' },
-  { src: '/Carrusel/Cover up/3.webp', style: 'Cover Up' },
+  { src: './Carrusel/CoverUp/1.webp', style: 'CoverUp' },
+  { src: './Carrusel/CoverUp/2.webp', style: 'CoverUp' },
+  { src: './Carrusel/CoverUp/3.webp', style: 'CoverUp' },
 
-  { src: '/Carrusel/polinesio/1.webp', style: 'Polinesio' },
-  { src: '/Carrusel/polinesio/2.webp', style: 'Polinesio' },
+  { src: './Carrusel/polinesio/1.webp', style: 'Polinesio' },
+  { src: './Carrusel/polinesio/2.webp', style: 'Polinesio' },
 
-  { src: '/Carrusel/lettering/1.webp', style: 'Lettering' },
-  { src: '/Carrusel/lettering/2.webp', style: 'Lettering' },
-  { src: '/Carrusel/lettering/3.webp', style: 'Lettering' },
-  { src: '/Carrusel/lettering/4.webp', style: 'Lettering' },
-  { src: '/Carrusel/lettering/5.webp', style: 'Lettering' },
-  { src: '/Carrusel/lettering/6.webp', style: 'Lettering' },
-  { src: '/Carrusel/lettering/7.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/1.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/2.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/3.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/4.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/5.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/6.webp', style: 'Lettering' },
+  { src: './Carrusel/lettering/7.webp', style: 'Lettering' },
 
-  { src: '/Carrusel/old school/1.webp', style: 'Old School' },
-  { src: '/Carrusel/old school/2.webp', style: 'Old School' },
-  { src: '/Carrusel/old school/3.webp', style: 'Old School' },
-  { src: '/Carrusel/old school/4.webp', style: 'Old School' },
+  { src: './Carrusel/OldSchool/1.webp', style: 'OldSchool' },
+  { src: './Carrusel/OldSchool/2.webp', style: 'OldSchool' },
+  { src: './Carrusel/OldSchool/3.webp', style: 'OldSchool' },
+  { src: './Carrusel/OldSchool/4.webp', style: 'OldSchool' },
 
-  { src: '/Carrusel/realismo/1.webp', style: 'Realismo' },
-  { src: '/Carrusel/realismo/2.webp', style: 'Realismo' },
-  { src: '/Carrusel/realismo/3.webp', style: 'Realismo' },
-  { src: '/Carrusel/realismo/4.webp', style: 'Realismo' },
+  { src: './Carrusel/realismo/1.webp', style: 'Realismo' },
+  { src: './Carrusel/realismo/2.webp', style: 'Realismo' },
+  { src: './Carrusel/realismo/3.webp', style: 'Realismo' },
+  { src: './Carrusel/realismo/4.webp', style: 'Realismo' },
 ]
 
 const filteredImages = computed(() =>

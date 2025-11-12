@@ -26,17 +26,17 @@
 const services = [
   {
     title: 'Creamos tu diseño',
-    video: '/design.mp4',
+    video: import.meta.env.BASE_URL +  'design.mp4',
     desc: 'Diseños personalizados y exclusivos para ti.'
   },
   {
     title: 'Reinventa tu tatuaje',
-    video: '/coverup.mp4',
-    desc: 'Cover up: Transformamos y mejoramos tatuajes antiguos.'
+    video: import.meta.env.BASE_URL + 'coverup.mp4',
+    desc: 'Coverup: Transformamos y mejoramos tatuajes antiguos.'
   },
   {
     title: 'Tatuamos tu idea',
-    video: '/tattoo.mp4',
+    video: import.meta.env.BASE_URL + 'tattoo.mp4',
     desc: 'Trae tu idea y la convertimos en arte.'
   }
 ]
