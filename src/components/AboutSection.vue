@@ -14,7 +14,7 @@
       </p>
 
       <p class="about-locations-intro">
-        Nos vemos en
+        Nos vemos en:
       </p>
       <div class="about-locations">
     

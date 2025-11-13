@@ -74,8 +74,8 @@ const images = [
   { src: './Carrusel/CoverUp/3.webp', style: 'CoverUp' },
 
   { src: './Carrusel/polinesio/1.webp', style: 'Polinesio' },
-
-// añadir aqui las imagenes de polinesio que faltan 
+  { src: './Carrusel/polinesio/2.jpeg', style: 'Polinesio' },
+  { src: './Carrusel/polinesio/3.jpeg', style: 'Polinesio' },
 
   { src: './Carrusel/lettering/1.webp', style: 'Lettering' },
   { src: './Carrusel/lettering/2.webp', style: 'Lettering' },
@@ -93,6 +93,7 @@ const images = [
   { src: './Carrusel/realismo/2.webp', style: 'Realismo' },
   { src: './Carrusel/realismo/3.webp', style: 'Realismo' },
   { src: './Carrusel/realismo/4.webp', style: 'Realismo' },
+  { src: './Carrusel/realismo/5.jpeg', style: 'Realismo' },
 ]
 
 const filteredImages = computed(() =>
