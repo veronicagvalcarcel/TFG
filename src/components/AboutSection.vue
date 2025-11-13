@@ -14,11 +14,10 @@
       </p>
 
       <p class="about-locations-intro">
-        Nos vemos en:
+        Nos vemos en
       </p>
       <div class="about-locations">
-        <a href="https://share.google/6Vn3oSlF0KLAmHE6q" target="_blank" class="location-btn">Felanitx: El Hoyo Tattoo Studio</a>
-        <a href="https://share.google/Q5wEQZ81XSPHpigmR" target="_blank" class="location-btn">Palma: Izz Tattoo Studio</a>
+    
         <span class="location-btn no-link">Sa Coma</span>
       </div>
     </div>

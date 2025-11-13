@@ -51,18 +51,15 @@ const styleIndex = ref(0) // índice del estilo actual
 // Imágenes por estilo
 const images = [
   { src: './Carrusel/blackwork/1.webp', style: 'Blackwork' },
-  { src: './Carrusel/blackwork/2.webp', style: 'Blackwork' },
   { src: './Carrusel/blackwork/3.webp', style: 'Blackwork' },
   { src: './Carrusel/blackwork/4.webp', style: 'Blackwork' },
   { src: './Carrusel/blackwork/5.webp', style: 'Blackwork' },
-  { src: './Carrusel/blackwork/6.webp', style: 'Blackwork' },
   { src: './Carrusel/blackwork/7.webp', style: 'Blackwork' },
 
   { src: './Carrusel/color/1.webp', style: 'Color' },
   { src: './Carrusel/color/2.webp', style: 'Color' },
   { src: './Carrusel/color/5.webp', style: 'Color' },
   { src: './Carrusel/color/6.webp', style: 'Color' },
-  { src: './Carrusel/color/7.webp', style: 'Color' },
   { src: './Carrusel/color/8.webp', style: 'Color' },
 
   { src: './Carrusel/FineLine/1.webp', style: 'FineLine' },
@@ -74,11 +71,11 @@ const images = [
   { src: './Carrusel/geometrico/3.webp', style: 'Geométrico' },
 
   { src: './Carrusel/CoverUp/1.webp', style: 'CoverUp' },
-  { src: './Carrusel/CoverUp/2.webp', style: 'CoverUp' },
   { src: './Carrusel/CoverUp/3.webp', style: 'CoverUp' },
 
   { src: './Carrusel/polinesio/1.webp', style: 'Polinesio' },
-  { src: './Carrusel/polinesio/2.webp', style: 'Polinesio' },
+
+// añadir aqui las imagenes de polinesio que faltan 
 
   { src: './Carrusel/lettering/1.webp', style: 'Lettering' },
   { src: './Carrusel/lettering/2.webp', style: 'Lettering' },
@@ -93,7 +90,6 @@ const images = [
   { src: './Carrusel/OldSchool/3.webp', style: 'OldSchool' },
   { src: './Carrusel/OldSchool/4.webp', style: 'OldSchool' },
 
-  { src: './Carrusel/realismo/1.webp', style: 'Realismo' },
   { src: './Carrusel/realismo/2.webp', style: 'Realismo' },
   { src: './Carrusel/realismo/3.webp', style: 'Realismo' },
   { src: './Carrusel/realismo/4.webp', style: 'Realismo' },
